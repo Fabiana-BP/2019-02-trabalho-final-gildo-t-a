@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta name="description" content="vanprime transportes">
+    <meta name="viewport" content="width-device-width, initial-scale-1">
+    <title>Empresa - Home</title>
+    <link rel="stylesheet" href="./css/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  </head>
+  <body>
+    <!-- Navbar-->
+      <nav class="navbar  navbar-light" style="background-color: #e3f2fd;">
+        <a class="navbar-brand" href="index.html">VANPRIME TRANSPORTES</a>
+        <input type="button" name="perfil" value="PERFIL" style="background-color: #e3f2fd;border:none;">
+        <input type="button" name="veiculos" value="VEÍCULOS" style="background-color: #e3f2fd;border:none;">
+        <input type="button" name="relatorio" value="RELATÓRIO" style="background-color: #e3f2fd;border:none;">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav">
+            <li class="nav-item active">
+              <a class="nav-link" href="principal.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Sair</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+      </nav>
+
+      <div>
+        <h1>EMPRESA</h1>
+      </div>
+      <div>
+        <h5>Bem Vindo usuário!</h5>
+      </div>
+
+      <!-- Área Página -->
+
+      <div class="row">
+        <div class="col-2" style="border:1px solid #e5e5e5;">
+
+          <!-- menu suspenso veículos -->
+          <h5>Veículos</h5>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a class="nav-link active" style="color:black" href="#">Cadastrar Veículo</a>
+            </li>
+            <li class="nav-item">
+              <!--aparecer lista dos veículos na sub-área da página -->
+              <input type="button" name="atualizar_veiculos" value="Atualizar Veículos" class="nav-link" style="background-color:#FFFFFF;border:none;">
+            </li>
+            <li class="nav-item">
+              <!--aparecer lista dos veículos na sub-área da página -->
+              <input type="button" name="atualizar_poltronas" value="Atualizar Poltronas" class="nav-link" style="background-color:#FFFFFF; border:none;font-weight:bold;">
+            </li>
+            <li class="nav-item">
+              <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="col-10">
+          <!-- Atualizar Poltronas -->
+
+          <div class="container">
+
+            <div>
+              <h5>Atualizar Poltronas - Veículo X</h5>
+              <br>
+              <br>
+            </div>
+
+            <div>
+              <label for="data_viagem">Data da viagem:</label>
+              <input type="date" name="data_viagem" id="data_viagem">
+
+              <label for="horario_viagem">Horário:</label>
+              <input type="time" name="horario_viagem" id="horario_viagem">
+            </div>
+
+            <div>
+              <div class="row">
+                <div class="col">
+                  <p>Marque as  poltronas ocupadas:</p>
+                </div>
+              </div>
+
+              <div class="row">
+                <div class="col-6">
+                  <table>
+                    <tr>
+                      <td><input type="button" name="p1" value="polt - 1" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p2" value="polt - 2" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p5" value="polt - 5" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p6" value="polt - 6" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p9" value="polt - 9" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p10" value="polt - 10" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p13" value="polt - 13" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p14" value="polt - 14" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p17" value="polt - 17" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p18" value="polt - 18" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p21" value="polt - 21" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p22" value="polt - 22" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p25" value="polt - 25" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p26" value="polt - 26" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p29" value="polt - 29" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p30" value="polt - 30" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p33" value="polt - 33" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p34" value="polt - 34" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p37" value="polt - 37" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p38" value="polt - 38" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p41" value="polt - 41" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p42" value="polt - 42" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                    <tr>
+                      <td><input type="button" name="p45" value="polt - 45" style="background-color: #e3f2fd;"></td>
+                      <td><input type="button" name="p46" value="polt - 46" style="background-color: #e3f2fd;"></td>
+                    </tr>
+                  </table>
+                </div>
+
+              <div class="col-6">
+                <table>
+                  <tr>
+                    <td><input type="button" name="p3" value="polt - 3" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p4" value="polt - 4" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p7" value="polt - 7" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p8" value="polt - 8" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p11" value="polt - 11" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p12" value="polt - 12" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p15" value="polt - 15" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p16" value="polt - 16" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p19" value="polt - 19" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p20" value="polt - 20" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p23" value="polt - 23" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p24" value="polt - 24" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p27" value="polt - 27" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p28" value="polt - 28" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p31" value="polt - 32" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p31" value="polt - 32" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p35" value="polt - 35" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p36" value="polt - 36" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p39" value="polt - 39" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p40" value="polt - 40" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p43" value="polt - 43" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p44" value="polt - 44" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                  <tr>
+                    <td><input type="button" name="p47" value="polt - 47" style="background-color: #e3f2fd;"></td>
+                    <td><input type="button" name="p48" value="polt - 48" style="background-color: #e3f2fd;"></td>
+                  </tr>
+                </table>
+              </div>
+
+            </div>
+
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

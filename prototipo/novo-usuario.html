@@ -1,0 +1,121 @@
+﻿<!DOCTYPE html>
+<html lang="pt-br" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>Página de Cadastro - Vanprime Transportes</title>
+    <link rel="icon" href="./img/vp-icon.png">
+    <meta name="description" content="vanprime transportes">
+    <meta name="viewport" content="width-device-width, initial-scale-1">
+    <!-- <link rel="stylesheet" href="./css/principal.css"> -->
+    <!-- <link rel="stylesheet" href="./css/nav-bar.css"> -->
+    <link rel="stylesheet" href="./css/bootstrap-4.3.1-dist/css/bootstrap.min.css">
+  </head>
+  <body>
+
+    <div class="row" style="background-color: #e3f2f2;">
+      <div class="col-sm-8 ">
+        <p><a class="navbar-brand" href="index.html">VANPRIME TRANSPORTES</a></p>
+      </div>
+      <div class="col-sm">
+        <a a class="nav-link active" style="color:black" href="#">LOGIN</a>
+      </div>
+      <div class="col-sm">
+        <a a class="nav-link active" style="color:black" href="novo-usuario.html">CADASTRE-SE</a>
+      </div>
+    </div>
+
+    <!-- Navbar-->
+
+    <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
+      <a class="navbar-brand" href="sobre.html">SOBRE</a>
+      <a class="navbar-brand" href="cidades-mais_visitadas.html">CIDADES MAIS VISITADAS</a>
+      <a class="navbar-brand" href="avaliacoes-clientes.html">AVALIAÇÕES</a>
+    </nav>
+
+
+    <span class="small d-block text-center">Crie sua conta</span>
+
+    <form action="">
+      <div class="form-check">
+        <input type="radio" id="usuario-cliente" name="tipo-usuario" class="form-check-input" checked>
+        <label for="cliente" class="form-check-label">Cliente</label>
+      </div>
+
+      <div class="form-check">
+        <input type="radio" id="usuario-empresa" name="tipo-usuario" class="form-check-input" disabled>
+        <label for="empresa" class="form-check-label">Empresa</label>
+      </div>
+
+      <div class="input-group mt-2">
+        <input type="text" name="nome-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Nome completo">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="email-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Email">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="documento-usuario" class="form-control bg-light btn-outline-secondary" placeholder="CPF (Somente os números)">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="cep-usuario" class="form-control bg-light btn-outline-secondary" placeholder="CEP">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="logradouro-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Logradouro (Rua/Avenida/etc)">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="casa-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Número">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="complemento-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Complemento">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="bairro-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Bairro">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="cidade-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Cidade">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="estado-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Estado">
+      </div>
+      <div class="input-group mt-2">
+        <input type="text" name="login-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Nome de usuário">
+      </div>
+      <div class="input-group mt-2">
+        <input type="password" name="senha-usuario" class="form-control bg-light btn-outline-secondary" placeholder="Senha">
+      </div>
+
+      <div class="custom-control custom-switch">
+        <input type="checkbox" id="aceite" class="custom-control-input">
+        <label for="aceite" class="custom-control-label">Li e aceito os <a href="#">termos de uso</a>.</label>
+      </div>
+
+      <div class="row">
+        <div class="col-md-6">
+          <button type="button" class="btn btn-secondary btn-block mt-2">CANCELAR</button>
+        </div>
+        <div class="col-md-6">
+          <button type="button" class="btn btn-info btn-block mt-2">CADASTRAR</button>
+        </div>
+      </div>
+    </form>
+
+    <button type="button" class="btn btn-default btn-block mt-2">Já tenho conta!</button>
+
+
+    <div class="container">
+      <div class="row">
+        <div class="col-sm">
+          <a class="nav-link active" style="color:black" href="./dúvidas.html">Dúvidas</a>
+        </div>
+        <div class="col-sm">
+          <a class="nav-link active" style="color:black" href="./contatos.html">Contatos</a>
+        </div>
+        <div class="col-sm">
+          <a class="nav-link active" style="color:black" href="./socios.html">Conheça nossos sócios</a>
+        </div>
+      </div>
+    </div>
+
+
+  </body>
+</html>
