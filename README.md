@@ -29,7 +29,7 @@ Este sistema terá dois públicos-alvo: empresas interessadas em vender passagen
 + compra da passagem e avaliação de satisfação;
 + relatório de compras;
 
-Além dessas funcionalidades serão implementados sistema de segurança através de login em dois fatores para as empresas, sistema de avaliação de clientes a fim de proporcionar legitimidade e maior qualidade dos serviços prestados, além de informações sobre os lugares mais visitados, ofertas e promoções oferecidas pelas empresas.
+Além dessas funcionalidades serão implementados sistema de segurança através de login em dois fatores para as empresas, sistema de avaliação de clientes a fim de proporcionar legitimidade e maior qualidade dos serviços prestados, além de informações sobre os lugares mais visitados, ofertas e promoções.
 
 ### 3. Restrições
 
@@ -38,10 +38,10 @@ Neste trabalho não será contemplado procedimentos de comprovação, validaçã
 ### 4. Protótipo
 
 A página principal irá conter opções que visam agilizar o acesso às informações e aos recursos para efetiva compra de passagens.
-* Página principal: Sobre a empresa, autenticação, campos para pesquisa de rotas (data, origem e destino), avaliações dos clientes e informações sobre as cidades que mais obtiveram compras.
-* Página da empresa: Opções de cadastro, visualizar perfil e relatório de vendas.
-* Página do cliente: Opção de cadastro, visualizar perfil, compras já efetuadas.
+* [Página principal](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/index.html): Sobre a empresa, autenticação, campos para pesquisa de rotas (data, origem e destino), avaliações dos clientes e informações sobre as cidades que mais obtiveram compras.
+* [Página da empresa](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/area-empresa.html): Opções de cadastro, visualizar perfil e relatório de vendas.
+* Página do cliente: [Opção de cadastro](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/novo-usuario.html), visualizar perfil, compras já efetuadas.
 * Página de rotas filtradas: Rotas disponíveis para a pesquisa específica, preços e botão de compra.
-* Página de compra: Visualizar dados da empresa, Selecionar poltrona disponível, escolher tipo de pagamento e botão para efetivar a compra.
+* Página de compra: Visualizar dados da empresa, selecionar poltrona disponível, escolher tipo de pagamento e botão para efetivar a compra.
 
 ### 5. Referências
