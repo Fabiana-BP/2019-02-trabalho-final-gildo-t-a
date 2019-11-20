@@ -47,6 +47,7 @@ A página principal irá conter opções que visam agilizar o acesso às informa
 ### 5. Execução
 * Copiar todo o conteúdo para a pasta _"c:/wamp/www/"_.
 * Criar banco de dados com nome 'bus' (sem aspas).
+* Executar script _bus.sql_ localizado na pasta raíz do projeto.
 * Abrir localhost em seu navegador padrão.
 
 ### 5. Referências
