@@ -44,4 +44,11 @@ A página principal irá conter opções que visam agilizar o acesso às informa
 * Página de rotas filtradas: Rotas disponíveis para a pesquisa específica, preços e botão de compra.
 * Página de compra: Visualizar dados da empresa, Selecionar poltrona disponível, escolher tipo de pagamento e botão para efetivar a compra.
 
+### 5. Execução
+* Copiar todo o conteúdo para a pasta _"c:/wamp/www/"_.
+* Criar banco de dados com nome 'bus' (sem aspas).
+* Abrir localhost em seu navegador padrão.
+
 ### 5. Referências
+* https://github.com/projectworldsofficial/Online-Bus-Booking-System-In-PHP
+* https://www.php.net/manual/pt_BR/index.php
