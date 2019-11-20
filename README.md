@@ -49,6 +49,7 @@ A página principal irá conter opções que visam agilizar o acesso às informa
 * Criar banco de dados com nome 'bus' (sem aspas).
 * Executar script _bus.sql_ localizado na pasta raíz do projeto.
 * Abrir localhost em seu navegador padrão.
+* Acesse este projeto em: http://gazevedo.ga
 
 ### 5. Referências
 * https://github.com/projectworldsofficial/Online-Bus-Booking-System-In-PHP
