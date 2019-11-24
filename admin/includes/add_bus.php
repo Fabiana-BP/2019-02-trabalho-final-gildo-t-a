@@ -87,7 +87,7 @@
 	</div>
 	
 	<div class="form-group">
-		<label for="via-time">Horários de Viajem</label>
+		<label for="via-time">Horários de Viagem</label>
 		<input type="text" class="form-control" name="via-time" placeholder="Horários separados por espaço">
 	</div>
 
