@@ -1,6 +1,9 @@
 
-@include('header')
-@include('navigation')
+@extends('base_view')
+@section('navigation_part')
+  @include('navigation')
+@endsection
+@section('content_part')
 
 
   <div class="container diferent_container2 len">
@@ -66,4 +69,4 @@
       </div>
   </div>
   <hr>
-  @include('footer')
+  @endsection

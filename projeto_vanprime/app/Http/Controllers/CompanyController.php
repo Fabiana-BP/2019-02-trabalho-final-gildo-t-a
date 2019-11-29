@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Category;
 use Illuminate\Http\Request;
 
 class CompanyController extends Controller
@@ -22,8 +23,9 @@ class CompanyController extends Controller
     * @return \Illuminate\Http\Response
     */
     public function show_companies_images(){
+      $categories=Category::orderBy('title')->get();
       $companies=Company::orderBy('name')->get();
-      return view('image_companies')->with('companies',$companies);
+      return view('image_companies',compact('companies','categories'));
     }
 
 

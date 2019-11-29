@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Category;
+use App\Company;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -14,7 +15,9 @@ class CategoryController extends Controller
      */
     public function index()
     {
+      $companies=Company::orderBy('name')->get();
       $categories=Category::orderBy('title')->get();
+      return view('index',compact('categories','companies'));
     }
 
     /**

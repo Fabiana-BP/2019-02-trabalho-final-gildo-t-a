@@ -1,5 +1,9 @@
-@include('header')
-@include('navigation')
+@extends('base_view')
+@section('navigation_part')
+  @include('navigation')
+@endsection
+@section('content_part')
+
 <?php
 
 
@@ -83,4 +87,4 @@
     echo "</div>";
  ?>
 </hr>
-@include('footer')
+@endsection

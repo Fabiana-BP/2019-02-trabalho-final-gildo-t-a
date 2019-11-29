@@ -1,6 +1,5 @@
 <?php
-use App\Company;
-$companies=Company::orderBy('name')->get();
+
 echo "<div class='jumbotron'>";
 foreach ($companies as $c) {
   echo "<a href='#'>";

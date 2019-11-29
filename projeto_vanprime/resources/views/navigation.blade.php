@@ -1,7 +1,3 @@
-<?php
-use App\Category;
- ?>
-
 
  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #182c39;" role="navigation">
 
@@ -28,7 +24,6 @@ use App\Category;
                <a class="navbar-brand" href="#">Cidades mais visitadas</a>
              </div>
              <?php
-                 $categories=Category::orderBy('title')->get();
                  foreach($categories as $c){ //fecth recupere e passe para frente
                    $cat_id=$c["id"];
                    $cat_title=$c["title"];

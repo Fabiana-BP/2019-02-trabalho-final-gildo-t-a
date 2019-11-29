@@ -21,6 +21,7 @@ class CategoryRatedController extends Controller
     {
 
       //recuperacao de dados
+      $categories=Category::orderBy('title')->get();
 
       $bus_content = DB::table('vehicles')->where('category_id', $cat)
             ->join('companies','vehicles.company_id','=','companies.id')
@@ -32,7 +33,7 @@ class CategoryRatedController extends Controller
             ->get();
 
       //Passar dados para a view
-      return view('category_rated')->with('bus_content',$bus_content);
+      return view('category_rated',compact('bus_content','categories'));
 
     }
 

@@ -1,5 +1,9 @@
-@include('header')
-@include('navigation')
+@extends('base_view')
+@section('navigation_part')
+  @include('navigation')
+@endsection
+@section('content_part')
+
 <div class="container diferent_container1 len1">
 <?php
   if (!isset($_SESSION['s_username'])) {
@@ -22,4 +26,4 @@
 <?php } ?>
 </div>
 <hr>
-@include('footer')
+@endsection

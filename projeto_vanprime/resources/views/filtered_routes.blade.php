@@ -1,5 +1,9 @@
-@include('header')
-@include('navigation')
+@extends('base_view')
+@section('navigation_part')
+  @include('navigation')
+@endsection
+@section('content_part')
+
 <div class="diferent_container1">
 <?php
 
@@ -77,4 +81,4 @@ echo "</table>";
 
  ?>
 <hr>
-@include('footer')
+@endsection

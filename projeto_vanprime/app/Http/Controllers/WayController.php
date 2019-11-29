@@ -8,6 +8,7 @@ use App\Vehicle;
 use App\Company;
 use App\Order;
 use App\Passenger;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -20,7 +21,7 @@ class WayController extends Controller
      */
     public function index($first,$last,$date,$passenger)
     {
-
+      $categories=Category::orderBy('title')->get();
       $filtered_way = DB::table('ways')->selectRaw('departure_city = ? and stop_city = ?',[$first,$last])
             ->join('armchairs','ways.id','=','armchairs.way_id')
             ->join('vehicles','ways.vehicle_id','=','vehicles.id')
@@ -31,10 +32,11 @@ class WayController extends Controller
             ->get();
 
       //Passar dados para a view
-    return view('filtered_routes',compact('filtered_way','date','passenger'));
+    return view('filtered_routes',compact('filtered_way','date','passenger','categories'));
     }
 
     public function max_seats($way_id,$passenger,$date){
+      $categories=Category::orderBy('title')->get();
       $way=DB::table('ways')->selectRaw('ways.id = ? and orders.date_trip = ?',[$way_id,$date])
         ->join('vehicles','vehicles.id','=','ways.vehicle_id')
         ->join('orders','orders.way_id','=','ways.id')
@@ -45,7 +47,7 @@ class WayController extends Controller
       ->get();
 
 
-      return view('choose_armchairs',compact('way','passenger','date'));
+      return view('choose_armchairs',compact('way','passenger','date','categories'));
 
     }
 

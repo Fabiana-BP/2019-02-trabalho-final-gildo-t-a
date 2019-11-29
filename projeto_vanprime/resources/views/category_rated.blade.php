@@ -1,14 +1,15 @@
-@include('header')
-@include('navigation')
+@extends('base_view')
+@section('navigation_part')
+  @include('navigation')
+@endsection
+@section('content_part')
 
 <div class="len1">
     <div class="row">
       <div class="col-8">
 
       <?php
-      if (isset($_GET['category'])) {
-              $cat_type = addslashes($_GET['category']);
-          }
+
           $comp=array();
         foreach( $bus_content as $b ){
           echo "<class='row'>";
@@ -68,4 +69,4 @@
 </div>
 
 <hr>
-@include('footer')
+@endsection

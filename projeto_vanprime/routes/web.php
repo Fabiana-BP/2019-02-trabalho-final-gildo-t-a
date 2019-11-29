@@ -11,17 +11,11 @@
 |
 */
 
-Route::get('/', function () {
-    return view('index');
-});
+Route::get('/', 'CategoryController@index');
 
-Route::get('/cadastro', function (){
-  return view('register.register_request');
-});
+Route::get('/cadastro', 'RegisterController@index');
 
-Route::get('/login',function(){
-  return view('login');
-});
+Route::get('/login','LoginController@index');
 
 Route::get('/categoria/{cat_id}','CategoryRatedController@index');
 
