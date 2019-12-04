@@ -13,13 +13,20 @@
 
 Route::get('/', 'CategoryController@index');
 
-Route::get('/cadastro', 'RegisterController@index');
+//Route::get('/cadastro', 'RegisterController@index');
+
+Route::resource('/cadastro','RegisterController');
 
 Route::get('/login','LoginController@index');
 
 Route::get('/categoria/{cat_id}','CategoryRatedController@index');
 
 Route::get('/empresas','CompanyController@show_companies_images');
+
+Route::post('/empresas/cadastro','CompanyController@store');
+
+Route::get('/empresas/create','CompanyController@create');
+
 
 Route::get('/rotasfiltradas/{first}/{last}/{date}/{passanger}','WayController@index');
 

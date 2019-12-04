@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>Vanprime Transportes</title>
-    <link rel="icon" href="./img/vp-icon.png">
+    <link rel="icon" href="img/vp-icon.png">
     <meta name="description" content="vanprime transportes">
     <meta name="viewport" content="width-device-width, initial-scale-1">
     <!--bootstrap-->
@@ -49,7 +49,7 @@
               <h5>Parceiros</h5>
               <ul>
                 <?php
-            
+
                   foreach($categories as $c){ //fecth recupere e passe para frente
                     $cat_id=$c["id"];
                     echo "<li>";

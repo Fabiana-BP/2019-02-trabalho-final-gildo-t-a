@@ -7,6 +7,7 @@ use App\Company;
 use App\Query;
 use App\User;
 use App\Vehicle;
+use App\Way;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -22,7 +23,8 @@ class CategoryRatedController extends Controller
 
       //recuperacao de dados
       $categories=Category::orderBy('title')->get();
-
+      $sources=Way::orderBy('departure_city')->distinct()->get();
+      $destinations=Way::orderBy('stop_city')->distinct()->get();
       $bus_content = DB::table('vehicles')->where('category_id', $cat)
             ->join('companies','vehicles.company_id','=','companies.id')
             ->join('queries','companies.id','=','queries.company_id')
@@ -33,7 +35,7 @@ class CategoryRatedController extends Controller
             ->get();
 
       //Passar dados para a view
-      return view('category_rated',compact('bus_content','categories'));
+      return view('category_rated',compact('bus_content','categories','sources','destinations'));
 
     }
 

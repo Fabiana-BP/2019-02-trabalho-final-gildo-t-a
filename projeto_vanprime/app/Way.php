@@ -18,6 +18,6 @@ class Way extends Model
 
     //Way -> Vehicle
     public function vehicle(){
-      return $this->belongsTo('App\Vehicle',);
+      return $this->belongsTo('App\Vehicle');
     }
 }

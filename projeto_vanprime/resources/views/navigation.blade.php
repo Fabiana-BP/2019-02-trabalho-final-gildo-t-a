@@ -11,7 +11,7 @@
                <a class="navbar-brand" href="/login">Entrar</a>
              </div>
              <div class="col-2">
-               <a class="navbar-brand" href="/cadastro">Cadastre-se</a>
+               <a class="navbar-brand" href="{{route('cadastro.create')}}">Cadastre-se</a>
              </div>
            </div>
            <div class="row">

@@ -2,10 +2,11 @@
 
 namespace App;
 
+
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Illuminate\Database\Eloquent\Model;
+
 
 class User extends Authenticatable
 {
@@ -26,8 +27,21 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'username','cpf','phone',
+        'image_user', 'user_role', 'company',
     ];
+
+    public function rules(){
+      return [
+        'name'=>'required|min:3|max:255',
+        'email'=>'required|min:6|max:255',
+        'password' =>'required|min:3|max:255',
+        'username' =>'required|min:3|max:10',
+        'cpf' =>'required|min:14|max:14',
+        'phone'=>'required|min:11|max:14',
+        ];
+
+    }
 
     /**
      * The attributes that should be hidden for arrays.

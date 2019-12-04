@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use App\Company;
+use App\Way;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,9 +16,12 @@ class CategoryController extends Controller
      */
     public function index()
     {
+      $sources=Way::orderBy('departure_city')->distinct()->get();
+      $destinations=Way::orderBy('stop_city')->distinct()->get();
+      //echo $sources;
       $companies=Company::orderBy('name')->get();
       $categories=Category::orderBy('title')->get();
-      return view('index',compact('categories','companies'));
+      return view('index',['categories'=>$categories,'companies'=>$companies,'sources'=>$sources,'destinations'=>$destinations]);
     }
 
     /**

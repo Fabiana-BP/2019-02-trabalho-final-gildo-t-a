@@ -21,6 +21,8 @@ class WayController extends Controller
      */
     public function index($first,$last,$date,$passenger)
     {
+      $sources=Way::orderBy('departure_city')->distinct()->get();
+      $destinations=Way::orderBy('stop_city')->distinct()->get();
       $categories=Category::orderBy('title')->get();
       $filtered_way = DB::table('ways')->selectRaw('departure_city = ? and stop_city = ?',[$first,$last])
             ->join('armchairs','ways.id','=','armchairs.way_id')
@@ -32,7 +34,7 @@ class WayController extends Controller
             ->get();
 
       //Passar dados para a view
-    return view('filtered_routes',compact('filtered_way','date','passenger','categories'));
+    return view('filtered_routes',compact('filtered_way','date','passenger','categories','sources','destinations'));
     }
 
     public function max_seats($way_id,$passenger,$date){
