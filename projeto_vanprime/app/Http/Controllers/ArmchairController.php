@@ -14,7 +14,7 @@ class ArmchairController extends Controller
      */
     public function index()
     {
-        //
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class ArmchairController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**

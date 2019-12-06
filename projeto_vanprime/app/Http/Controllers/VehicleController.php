@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Vehicle;
+use App\Category;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -15,10 +16,13 @@ class VehicleController extends Controller
      */
     public function index()
     {
-        //
+      $categories=Category::orderBy('title')->get();
+      $vehicles=Vehicle::orderBy('board')->get();
+      $nav=2;
+      return view('admin.index',['categories'=>$categories,'nav'=>$nav,'vehicles'=>$vehicles]);
     }
 
-    
+
 
     /**
      * Show the form for creating a new resource.
@@ -27,7 +31,9 @@ class VehicleController extends Controller
      */
     public function create()
     {
-        //
+      $categories=Category::orderBy('title')->get();
+      $nav=1;
+      return view('admin.index',['categories'=>$categories,'nav'=>$nav]);
     }
 
     /**
@@ -38,7 +44,23 @@ class VehicleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+      //validação
+      $validatedData = $request->validate(
+[
+      'board'=>'required|min:7|max:7|unique:vehicles',
+      'category_id'=>'required|integer',
+      'max_seats'=>'required|integer',
+    ]);
+    //dd($request);
+    //gravar
+    //gravar
+    Vehicle::create($request->all());
+    $categories=Category::orderBy('title')->get();
+
+    $nav=3;
+    //dd($request);
+    return redirect()->route('veiculos.create',['nav'=>$nav,'categories'=>$categories]);
     }
 
     /**
@@ -49,7 +71,12 @@ class VehicleController extends Controller
      */
     public function show(Vehicle $vehicle)
     {
-        //
+
+      //echo $vehicle;
+      $categories=Category::orderBy('title')->get();
+      $nav=3;
+      return view('admin.index',compact('categories','nav','vehicle'));
+
     }
 
     /**
@@ -58,9 +85,13 @@ class VehicleController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function edit(Vehicle $vehicle)
+    public function edit($id)
     {
-        //
+      $vehicle = Vehicle::find($id);
+      $categories=Category::orderBy('title')->get();
+      $nav=4;
+      return view('admin.index',['categories'=>$categories,'nav'=>$nav,'vehicle'=>$vehicle]);
+
     }
 
     /**
@@ -72,7 +103,23 @@ class VehicleController extends Controller
      */
     public function update(Request $request, Vehicle $vehicle)
     {
-        //
+      //validação
+      //validação
+      dd($request);
+
+      /*$validatedData = $request->validate(
+      ['board'=>'required|min:7|max:7|unique:vehicles',
+      'category_id'=>'required|integer',
+      'max_seats'=>'required|integer',
+      ]);
+      //falta buscar dado da empresa logada
+      $vehicle->fill($request->all());//atualiza
+      $vehicle->save();//persiste no bd
+      session()->flash('mensagem','Veículo Atualizado com Sucesso!');
+      $categories=Category::orderBy('title')->get();
+      $vehicles=Vehicle::orderBy('board')->get();
+      $nav=2;
+      return view('admin.index',['categories'=>$categories,'nav'=>$nav,'vehicles'=>$vehicles]);*/
     }
 
     /**

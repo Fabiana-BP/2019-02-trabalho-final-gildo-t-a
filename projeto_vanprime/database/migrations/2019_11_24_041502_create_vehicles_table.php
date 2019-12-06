@@ -19,7 +19,6 @@ class CreateVehiclesTable extends Migration
           $table->string('board',7)->unique();
           $table->unsignedBigInteger('category_id');
           $table->integer('max_seats');
-          $table->text('image_bus')->nullable();
 
           $table->timestamps();
 

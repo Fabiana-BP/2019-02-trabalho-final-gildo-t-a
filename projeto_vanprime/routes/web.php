@@ -31,3 +31,15 @@ Route::get('/empresas/create','CompanyController@create');
 Route::get('/rotasfiltradas/{first}/{last}/{date}/{passanger}','WayController@index');
 
 Route::get('/efetuarcompra/{way_id}/{passenger}/{date}','WayController@max_seats');
+
+//rotas para área da empresas
+
+Route::get('/areaempresa','CompanyController@index');
+
+Route::resource('/areaempresa/veiculos','VehicleController');
+
+Route::resource('/areaempresa/veiculos/poltronas','ArmchairController');
+
+Route::get('/areaempresa/veiculos/data_viagem/{veiculo}','AuxiliarController@show');
+
+Route::post('/areaempresa/veiculos/data_viagem/poltronas','AuxiliarController@searcharmchairs')->name('form-adm-armchairs');

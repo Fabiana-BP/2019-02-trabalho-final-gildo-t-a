@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\User;
 use App\Category;
+use App\Vehicle;
 use App\Way;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,11 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        $nav=2;
+        $categories=Category::orderBy('title')->get();
+        $vehicles=Vehicle::orderBy('board')->get();
+        return view('admin.index',['categories'=>$categories,'nav'=>$nav,'vehicles'=>$vehicles]);
+
     }
 
     /**

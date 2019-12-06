@@ -23,6 +23,9 @@
              <div class="col">
                <a class="navbar-brand" href="#">Cidades mais visitadas</a>
              </div>
+             <div class="col">
+               <a class="navbar-brand" href="/areaempresa">Minha Empresa</a>
+             </div>
              <?php
                  foreach($categories as $c){ //fecth recupere e passe para frente
                    $cat_id=$c["id"];
