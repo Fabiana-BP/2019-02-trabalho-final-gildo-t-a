@@ -23,8 +23,8 @@ class CategoryRatedController extends Controller
 
       //recuperacao de dados
       $categories=Category::orderBy('title')->get();
-      $sources=Way::orderBy('departure_city')->distinct()->get();
-      $destinations=Way::orderBy('stop_city')->distinct()->get();
+      $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
+      $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
       $bus_content = DB::table('vehicles')->where('category_id', $cat)
             ->join('companies','vehicles.company_id','=','companies.id')
             ->join('queries','companies.id','=','queries.company_id')

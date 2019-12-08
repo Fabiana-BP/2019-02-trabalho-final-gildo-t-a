@@ -4,59 +4,58 @@
 @endsection
 @section('content_part')
 
-<?php
+
+  <div class="container len1">
+    <div class="well">
+      <h4>Cliente - X</h4>
+      <h5>Empresa: {{$vehicle->company->name}}</h5>
+      <h5>Partida: {{$way->timetable}}</h5>
+      <h5>Embarque: {{$way->departure_city}} - Desembarque: {{$way->stop_city}}</h5>
+      <br>
+      <br>
+    </div>
 
 
-  //preencher poltronas
+    <div class="form-group">
+      <p>Escolhas as  poltronas desejadas:</p>
+    </div>
+  <?php
+    //preencher poltronas
 
-  echo "<div class='container len form-group'>";
+    echo "<div class='container len form-group'>";
 
-  $maxseats=0;
-  $armchairs=array();
-  $styles=array();
-  foreach ($way as $wy) {
-    $maxseats=$wy->max_seats;
-    $firstcity=$wy->first;
-    $lastcity=$wy->last;
-    $time=$wy->time;
-    $cname=$wy->company_name;
-    break;
-  }
+      $chairs=array();
+      $styles=array();
 
-  $cont=0;
-  while($cont < $maxseats){
-    $armchairs[]=" ";
-    $styles[]="btn btn-light form-control";
-    $cont=$cont+1;
-  }
+      $cont=0;
+      while($cont < $vehicle->max_seats){
+        $s=$cont+1;
+        $chairs[]="/areacliente/veiculos/addpoltrona/$way->id/$date_trip/$s";
+        $styles[]="btn btn-light form-control";
+        $cont=$cont+1;
+      }
 
-  foreach ($way as $wy) {
-    $i=$wy->seat - 1;
-    $armchairs[$i]="disabled";
-    $styles[$i]="form-control btn btn-primary ";
-  }
-  echo "<div class='well'>";
-  echo "<h5>Empresa: $cname</h5>";
-  echo "<h5>Partida: $time</h5>";
-  echo "<h5>Embarque: $firstcity - Desembarque: $lastcity</h5>";
-  echo "</div>";
-  echo "<h4>Selecione a(s) poltrona(s) desejada(s):</h4>";
-  $cont=0;
-  $aux=1;
-  $aux1=0;
-    while($cont < $maxseats){
+      foreach ($armchairs as $s) {
+        $i=$s->seat - 1;
+        $chairs[$i]="#";
+        $styles[$i]="form-control btn btn-primary ";
+      }
 
+
+      $cont=0;
+      $aux=1;
+      $aux1=0;
+      while($cont < $vehicle->max_seats){
         echo "<div class='row'>";
-
-        echo "<div class='col-1'>";
-        echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $armchairs[$aux1]>";
-        echo "</div>";
+          echo "<div class='col-1'>";
+            echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
+          echo "</div>";
         $cont=$cont+1;
         $aux=$aux+1;
         $aux1=$aux1+1;
-        if($cont < $maxseats){
+        if($cont < $vehicle->max_seats){
           echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $armchairs[$aux1]>";
+            echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
           echo "</div>";
         }
         $cont=$cont+1;
@@ -65,17 +64,17 @@
         echo "<div class='col-2'>";
         echo "</div>";
 
-        if($cont < $maxseats){
+        if($cont < $vehicle->max_seats){
           echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $armchairs[$aux1]>";
+            echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
           echo "</div>";
         }
         $cont=$cont+1;
         $aux=$aux-1;
         $aux1=$aux1-1;
-        if($cont < $maxseats){
+        if($cont < $vehicle->max_seats){
           echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $armchairs[$aux1]>";
+            echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
           echo "</div>";
         }
         $cont=$cont+1;
@@ -84,7 +83,10 @@
         echo "</div>";
 
     }
+
     echo "</div>";
- ?>
-</hr>
-@endsection
+    echo "<input type='button' value='Voltar' class='btn btn-success box_style' onclick='location.href = history.go(-1);'>";
+    ?>
+  </div>
+
+  @endsection

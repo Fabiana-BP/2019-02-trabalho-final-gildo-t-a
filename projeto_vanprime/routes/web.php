@@ -27,10 +27,13 @@ Route::post('/empresas/cadastro','CompanyController@store');
 
 Route::get('/empresas/create','CompanyController@create');
 
+//rotas para clientes
 
 Route::get('/rotasfiltradas/{first}/{last}/{date}/{passanger}','WayController@index');
 
 Route::get('/efetuarcompra/{way_id}/{passenger}/{date}','WayController@max_seats');
+
+Route::get('/areacliente/veiculos/addpoltrona/{way_id}/{date_trip}/{seat}','AuxiliarclientController@createseat');
 
 //rotas para área da empresas
 
@@ -38,8 +41,12 @@ Route::get('/areaempresa','CompanyController@index');
 
 Route::resource('/areaempresa/veiculos','VehicleController');
 
-Route::resource('/areaempresa/veiculos/poltronas','ArmchairController');
-
 Route::get('/areaempresa/veiculos/data_viagem/{veiculo}','AuxiliarController@show');
 
+Route::get('/areaempresa/veiculos/addpoltrona/{way_id}/{date_trip}/{seat}','AuxiliarController@createseat');
+
+Route::resource('/areaempresa/veiculos/poltronas','NocustomerController');
+
 Route::post('/areaempresa/veiculos/data_viagem/poltronas','AuxiliarController@searcharmchairs')->name('form-adm-armchairs');
+
+Route::get('/areaempresa/veiculos/{date_trip}/{way_id}','AuxiliarController@searcharmchairsback');

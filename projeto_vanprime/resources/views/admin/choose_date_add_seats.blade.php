@@ -2,7 +2,7 @@
   <div class="form-group">
     <h5><strong>Atualizar Poltronas - {{$vehicle->board}}</strong></h5>
   </div>
-  <form action="/areaempresa/veiculos/data_viagem/poltronas" method="POST">
+  <form name="form-adm-armchairs" action="/areaempresa/veiculos/data_viagem/poltronas" method="POST">
     @csrf
 
     <input type="hidden" value="{{$vehicle->board}}" name="board">

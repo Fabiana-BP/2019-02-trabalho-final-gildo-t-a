@@ -16,6 +16,11 @@ class Way extends Model
       return $this->hasMany('App\Order');
     }
 
+    // 1:N -> nocustomers
+    public function nocustomers(){
+      return $this->hasMany('App\Nocustomer');
+    }
+
     //Way -> Vehicle
     public function vehicle(){
       return $this->belongsTo('App\Vehicle');

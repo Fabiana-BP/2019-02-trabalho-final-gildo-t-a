@@ -9,6 +9,7 @@ use App\Company;
 use App\Order;
 use App\Passenger;
 use App\Category;
+use App\Nocustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -21,35 +22,42 @@ class WayController extends Controller
      */
     public function index($first,$last,$date,$passenger)
     {
-      $sources=Way::orderBy('departure_city')->distinct()->get();
-      $destinations=Way::orderBy('stop_city')->distinct()->get();
+      $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
+      $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
       $categories=Category::orderBy('title')->get();
-      $filtered_way = DB::table('ways')->selectRaw('departure_city = ? and stop_city = ?',[$first,$last])
-            ->join('armchairs','ways.id','=','armchairs.way_id')
+
+      $no_seats=DB::table('ways')->whereRaw('departure_city = ? and stop_city = ? and nocustomers.date_trip=?',[$first,$last,$date])
+                  ->join('nocustomers','nocustomers.way_id','=','ways.id')
+                  ->select(DB::raw('count(nocustomers.id) as available'),'ways.id as ways_id')
+                  ->groupBy('ways.id')->get();
+
+                //  echo $no_seats;
+
+     $filtered_way = DB::table('ways')->whereRaw('ways.departure_city = ? and ways.stop_city = ?',[$first,$last])
             ->join('vehicles','ways.vehicle_id','=','vehicles.id')
             ->join('companies','vehicles.company_id','=','companies.id')
-            ->select('ways.id as ways_id','companies.name as cname','ways.departure_city as first_city','ways.stop_city as last_city','ways.timetable as timetable',
-            'armchairs.max_seats as max_seats','armchairs.available_seats as available_seats',
-            'ways.price as price','ways.discount as discount','armchairs.date_trip as date_reserved')
+            ->select('ways.id as ways_id','companies.name as cname','ways.departure_city as first_city','ways.stop_city as last_city',
+            'ways.timetable as timetable','vehicles.max_seats as max_seats','ways.price as price','ways.discount as discount')
+            ->distinct()
             ->get();
+          //echo $filtered_way;
 
       //Passar dados para a view
-    return view('filtered_routes',compact('filtered_way','date','passenger','categories','sources','destinations'));
+      return view('filtered_routes',compact('filtered_way','date','passenger','categories','sources','destinations','no_seats'));
     }
 
     public function max_seats($way_id,$passenger,$date){
-      $categories=Category::orderBy('title')->get();
-      $way=DB::table('ways')->selectRaw('ways.id = ? and orders.date_trip = ?',[$way_id,$date])
-        ->join('vehicles','vehicles.id','=','ways.vehicle_id')
-        ->join('orders','orders.way_id','=','ways.id')
-        ->join('passengers','passengers.order_id','=','orders.id')
-        ->join('companies','vehicles.company_id','=','companies.id')
-        ->select('vehicles.max_seats as max_seats','passengers.seat as seat','ways.departure_city as first',
-        'ways.stop_city as last','ways.timetable as time','companies.name as company_name')
-      ->get();
 
+      //dd($request);
+      $way=Way::find($way_id);
+      $vehicle=Vehicle::orderBy('board')->where('id','=',$way->vehicle->id)->first();
+      $ways=Way::orderBy('departure_city')->where('vehicle_id','=',$vehicle->id)->get();
+        $armchairs=Nocustomer::orderBy('way_id')->whereRaw('date_trip  = ? and way_id = ?',[$date,$way_id])->select('seat')->get();
+        $nav=6;
+        $categories=Category::orderBy('title')->get();
 
-      return view('choose_armchairs',compact('way','passenger','date','categories'));
+        return view('choose_armchairs',['armchairs'=>$armchairs,'categories'=>$categories,'vehicle'=>$vehicle,
+         'ways'=>$ways,'date_trip'=>$date,'way'=>$way,'passenger'=>$passenger]);
 
     }
 

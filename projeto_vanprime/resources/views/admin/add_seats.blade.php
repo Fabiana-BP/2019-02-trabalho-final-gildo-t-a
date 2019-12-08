@@ -10,7 +10,7 @@
       <label class="box_style" for="date_trip">Data da viagem:</label>
       <input class="form-control box_style" type="date" name="date_trip" id="date_trip" value="{{$date_trip}}" disabled>
     </div>
-    <div class="col-3">
+    <div class="col-4">
       <label class="box_style" for="way_id">Rota:</label>
       <select id="way_id" class="custom-select box_style form-control box_style" name="way_id" disabled>
         @foreach ($ways as $w)
@@ -41,16 +41,18 @@
 
     $cont=0;
     while($cont < $vehicle->max_seats){
-      $chairs[]=" ";
+      $s=$cont+1;
+      $chairs[]="/areaempresa/veiculos/addpoltrona/$way_id/$date_trip/$s";
       $styles[]="btn btn-light form-control";
       $cont=$cont+1;
     }
 
     foreach ($armchairs as $s) {
-      $i=$s->seats - 1;
-      $chairs[$i]="disabled";
+      $i=$s->seat - 1;
+      $chairs[$i]="#";
       $styles[$i]="form-control btn btn-primary ";
     }
+
 
     $cont=0;
     $aux=1;
@@ -58,14 +60,14 @@
     while($cont < $vehicle->max_seats){
       echo "<div class='row'>";
         echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $chairs[$aux1]>";
+          echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
         echo "</div>";
       $cont=$cont+1;
       $aux=$aux+1;
       $aux1=$aux1+1;
       if($cont < $vehicle->max_seats){
         echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $chairs[$aux1]>";
+          echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
         echo "</div>";
       }
       $cont=$cont+1;
@@ -76,7 +78,7 @@
 
       if($cont < $vehicle->max_seats){
         echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $chairs[$aux1]>";
+          echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
         echo "</div>";
       }
       $cont=$cont+1;
@@ -84,7 +86,7 @@
       $aux1=$aux1-1;
       if($cont < $vehicle->max_seats){
         echo "<div class='col-1'>";
-          echo "<input class='$styles[$aux1]' type='button' value='$aux' name='$aux' id='$aux' $chairs[$aux1]>";
+          echo "<a class='$styles[$aux1]' href='$chairs[$aux1]'>$aux</a>";
         echo "</div>";
       }
       $cont=$cont+1;
@@ -93,6 +95,8 @@
       echo "</div>";
 
   }
+
   echo "</div>";
+  echo "<input type='button' value='Voltar' class='btn btn-success box_style' onclick='location.href = history.go(-1);'>";
   ?>
 </div>

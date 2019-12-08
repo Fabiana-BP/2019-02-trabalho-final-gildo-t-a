@@ -21,6 +21,7 @@
     <script src="<?php echo asset('js/register.js')?>"></script>
     <script src="<?php echo asset('js/search.js')?>"></script>
     <script src="<?php echo asset('js/register_vehicle.js')?>"></script>
+    <script src="<?php echo asset('js/others.js')?>"></script>
 
 
     <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -28,7 +29,11 @@
   </head>
 <body>
   @yield('navigation_part')
-
+  @if(Session::has('mensagem'))
+  <div class="alert alert-success">
+    <strong>{{Session::get('mensagem')}}</strong>
+  </div>
+  @endif
   @yield('content_part')
 
   <footer id="myFooter" >

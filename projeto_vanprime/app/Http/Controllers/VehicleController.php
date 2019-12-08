@@ -54,7 +54,6 @@ class VehicleController extends Controller
     ]);
     //dd($request);
     //gravar
-    //gravar
     Vehicle::create($request->all());
     $categories=Category::orderBy('title')->get();
 

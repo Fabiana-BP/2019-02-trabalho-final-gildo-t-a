@@ -1,4 +1,4 @@
-<div class="container well">
+<div class="container">
   <div class="diferent_container1">
     <h1>Veículos</h1>
   </div>
@@ -24,9 +24,9 @@
           <td>{{$v->max_seats}}</td>
           <td>{{$v->category->title}}</td>
           <td>{{$v->created_at}}</td>
-          <td>{{$v->update_at}}</td>
+          <td>{{$v->updated_at}}</td>
           <td><a class='btn btn-primary' href="{{route('veiculos.edit',$v->id)}}">Editar</a></td>
-          <td><a href="/areaempresa/veiculos/data_viagem/{{$v->id}}" class='btn btn-primary'>Adicionar assento</a></td>
+          <td><a href="/areaempresa/veiculos/data_viagem/{{$v->id}}" class='btn btn-success'>Adicionar assento</a></td>
         </tr>
 
         @endforeach

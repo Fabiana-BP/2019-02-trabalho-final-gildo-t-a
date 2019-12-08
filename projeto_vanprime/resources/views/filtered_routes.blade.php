@@ -77,20 +77,23 @@ echo "</tr>";
 echo "</thead>";
 echo "<tbody>";
   foreach ($filtered_way as $f) {
+    $oseats=0;
+    foreach ($no_seats as $w){
+      if($f->ways_id == $w->ways_id){
+        $oseats=$w->available;
+      }
+    }
 
+    $pass_rest=$f->max_seats-$oseats;
     echo "<tr>";
     $wayid=$f->ways_id;
-    $pass_rest=$f->max_seats - $f->available_seats;
     $price_discount=$f->price - ($f->price * $f->discount);
     if($pass_rest>=$passenger){
       echo "<td>$f->cname</td>";
       echo "<td>$f->timetable</td>";
       echo "<td>$f->first_city / $f->last_city</td>";
-      if($f->date_reserved == $date){
-        echo "<td>$pass_rest</td>";
-      }else{
-        echo "<td>$f->max_seats</td>";
-      }
+
+      echo "<td>$pass_rest</td>";
       echo "<td>$f->price</td>";
       echo "<td>$price_discount</td>";
       $way_id=$fi->ways_id;
@@ -102,6 +105,7 @@ echo "<tbody>";
   }
   echo "</tbody>";
 echo "</table>";
+echo "<input type='button' value='Voltar' class='btn btn-success box_style' onclick='location.href = history.go(-1);'>";
 
  ?>
 <hr>
