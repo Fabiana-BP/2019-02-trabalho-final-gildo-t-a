@@ -5,7 +5,6 @@
 @section('content_part')
 
 
-
       <div class="diferent_container">
         <div class="row">
           <div class="col-4">

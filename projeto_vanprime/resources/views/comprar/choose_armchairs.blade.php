@@ -4,17 +4,21 @@
 @endsection
 @section('content_part')
 
+<!--verificar se variáveis são nulas-->
+
+@if(!isset($way,$vehicle,$armchairs))
+    <script>location.href = history.go(-1);</script>
+@endif
+
 
   <div class="container len1">
     <div class="well">
-      <h4>Cliente - X</h4>
+      <h4>{{Auth::user()->name}}</h4>
       <h5>Empresa: {{$vehicle->company->name}}</h5>
       <h5>Partida: {{$way->timetable}}</h5>
       <h5>Embarque: {{$way->departure_city}} - Desembarque: {{$way->stop_city}}</h5>
-      <br>
-      <br>
     </div>
-
+    <br>
 
     <div class="form-group">
       <p>Escolhas as  poltronas desejadas:</p>
@@ -30,7 +34,7 @@
       $cont=0;
       while($cont < $vehicle->max_seats){
         $s=$cont+1;
-        $chairs[]="/areacliente/veiculos/addpoltrona/$way->id/$date_trip/$s";
+        $chairs[]="/areacliente/veiculos/addpoltrona/$way->id/$date_trip/$s/$order_id";
         $styles[]="btn btn-light form-control";
         $cont=$cont+1;
       }
@@ -85,7 +89,7 @@
     }
 
     echo "</div>";
-    echo "<input type='button' value='Voltar' class='btn btn-success box_style' onclick='location.href = history.go(-1);'>";
+    session()->forget('function');
     ?>
   </div>
 

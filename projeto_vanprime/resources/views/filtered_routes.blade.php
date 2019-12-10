@@ -97,7 +97,8 @@ echo "<tbody>";
       echo "<td>$f->price</td>";
       echo "<td>$price_discount</td>";
       $way_id=$fi->ways_id;
-      echo "<td><a class='btn btn-primary box_style' href='/efetuarcompra/$way_id/$passenger/$date'>Comprar</a></td>";
+      session(['acao' => 'comprar','way_id'=>$way_id,'passenger'=>$passenger,'date'=>$date,'price'=>$price_discount]);
+      echo "<td><a class='btn btn-primary box_style' href='/efetuarcompra'>Comprar</a></td>";
     }
 
     echo "</tr>";

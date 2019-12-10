@@ -74,6 +74,7 @@ class CompanyController extends Controller
           'city'=>'required|min:3|max:255',
           'phone'=>'required|min:10|max:255',
           'content'=>'max:255',
+          'image_company' => 'mimes:jpeg,bmp,png',
         ]);
 
 

@@ -5,8 +5,24 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Category;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller{
+
+
+  /**
+   * Create a new controller instance.
+   *
+   * @return void
+   */
+  public function __construct()
+  {
+      $this->middleware('guest');
+  }
+
+
   /**
    * Display a listing of the resource.
    *
@@ -19,7 +35,7 @@ class RegisterController extends Controller{
     $categories=Category::orderBy('title')->get();
 
     //Passar dados para a view
-    return view('register.register_request',compact('categories'));
+    return view('auth.register',compact('categories'));
 
   }
 
@@ -48,7 +64,7 @@ class RegisterController extends Controller{
       $u->phone=$request->phone;
       $u->phone=$request->phone;
       $u->user_role=$request->user_role;
-      $u->password= md5($request->password);
+      $u->password= Hash::make($request->password);
       $username=$request->username;
       $u->email=$request->email;
     //salvar foto em storage/app/public/profiles/
@@ -57,7 +73,14 @@ class RegisterController extends Controller{
         $name = uniqid(date('HisYmd'));
 
         // Recupera a extensão do arquivo
-        $extension = $request->image_user->extension();
+        try{
+          $extension = $request->image_user->extension();
+        }catch(Exception $e){
+          return redirect()
+                      ->back()
+                      ->with('error', 'Arquivo não suportado')
+                      ->withInput();
+        }
 
         // Define finalmente o nome
         $nameFile = "{$name}.{$extension}";
@@ -76,7 +99,7 @@ class RegisterController extends Controller{
 
       return view('register.register_company',compact('categories','username'));
     }else if($save && ($request->user_role=="client")){
-      return view('login')->with('categories',$categories);
+      return redirect('login');
     }else{
       return redirect()->route('cadastro.create')->withInput();
     }

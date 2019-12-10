@@ -12,6 +12,7 @@ use App\Category;
 use App\Nocustomer;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class WayController extends Controller
 {
@@ -46,18 +47,31 @@ class WayController extends Controller
       return view('filtered_routes',compact('filtered_way','date','passenger','categories','sources','destinations','no_seats'));
     }
 
-    public function max_seats($way_id,$passenger,$date){
+    public function max_seats($way_id,$passenger,$date,$order_id){
+      //precisa estar logado
+      if(Auth::check()){
+        if(Auth::user()->user_role=='client'){
+          //dd($request);
+          $way=Way::find($way_id);
+          $vehicle=Vehicle::orderBy('board')->where('id','=',$way->vehicle->id)->first();
+          $ways=Way::orderBy('departure_city')->where('vehicle_id','=',$vehicle->id)->get();
+          $armchairs=Nocustomer::orderBy('way_id')->whereRaw('date_trip  = ? and way_id = ?',[$date,$way_id])->select('seat')->get();
+          $nav=6;
+          $categories=Category::orderBy('title')->get();
 
-      //dd($request);
-      $way=Way::find($way_id);
-      $vehicle=Vehicle::orderBy('board')->where('id','=',$way->vehicle->id)->first();
-      $ways=Way::orderBy('departure_city')->where('vehicle_id','=',$vehicle->id)->get();
-        $armchairs=Nocustomer::orderBy('way_id')->whereRaw('date_trip  = ? and way_id = ?',[$date,$way_id])->select('seat')->get();
-        $nav=6;
-        $categories=Category::orderBy('title')->get();
 
-        return view('choose_armchairs',['armchairs'=>$armchairs,'categories'=>$categories,'vehicle'=>$vehicle,
-         'ways'=>$ways,'date_trip'=>$date,'way'=>$way,'passenger'=>$passenger]);
+
+
+          return view('comprar.choose_armchairs',['armchairs'=>$armchairs,'categories'=>$categories,'vehicle'=>$vehicle,
+          'ways'=>$ways,'date_trip'=>$date,'way'=>$way,'passenger'=>$passenger,'order_id'=>$order_id]);
+
+          }else{
+            return abort(403,'Operação não permitida!');
+          }
+        }else{
+          session(['function' => 'max_seats','way_id'=>$way_id,'passenger'=>$passenger,'date'=>$date,'order_id'=>$order_id]);
+          return redirect()->route('login');
+        }
 
     }
 

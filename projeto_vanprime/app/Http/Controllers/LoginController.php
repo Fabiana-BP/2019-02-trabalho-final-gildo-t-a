@@ -18,7 +18,7 @@ class LoginController extends Controller{
     $categories=Category::orderBy('title')->get();
 
     //Passar dados para a view
-    return view('login',compact('categories'));
+    return redirect('login')->with('categories'=>$categories));
 
   }
 }

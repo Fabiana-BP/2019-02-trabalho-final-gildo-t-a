@@ -6,7 +6,7 @@
 @section('content_part')
 
 
-  <div class="container diferent_container2 len">
+  <div class="container len">
     <div class="well">
         <div class="text-xl-center">
           <h2>Cadastrar Empresa</h2>

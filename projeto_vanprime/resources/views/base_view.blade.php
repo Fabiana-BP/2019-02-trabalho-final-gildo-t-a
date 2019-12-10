@@ -21,6 +21,7 @@
     <script src="<?php echo asset('js/register.js')?>"></script>
     <script src="<?php echo asset('js/search.js')?>"></script>
     <script src="<?php echo asset('js/register_vehicle.js')?>"></script>
+    <script src="<?php echo asset('js/compras.js')?>"></script>
     <script src="<?php echo asset('js/others.js')?>"></script>
 
 
@@ -30,12 +31,17 @@
 <body>
   @yield('navigation_part')
   @if(Session::has('mensagem'))
-  <div class="alert alert-success">
+  <div class="alert alert-success len1">
     <strong>{{Session::get('mensagem')}}</strong>
   </div>
   @endif
+  @if(Session::has('mensagem1'))
+  <div class="alert alert-danger len1">
+    <strong>{{Session::get('mensagem1')}}</strong>
+  </div>
+  @endif
   @yield('content_part')
-
+  @yield('content')
   <footer id="myFooter" >
 
   <div>

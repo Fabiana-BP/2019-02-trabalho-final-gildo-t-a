@@ -10,6 +10,9 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
+Auth::routes();
+
+Route::get('/home', 'CategoryController@index')->name('home');
 
 Route::get('/', 'CategoryController@index');
 
@@ -17,7 +20,7 @@ Route::get('/', 'CategoryController@index');
 
 Route::resource('/cadastro','RegisterController');
 
-Route::get('/login','LoginController@index');
+//Route::get('/login','LoginController@index');
 
 Route::get('/categoria/{cat_id}','CategoryRatedController@index');
 
@@ -31,9 +34,15 @@ Route::get('/empresas/create','CompanyController@create');
 
 Route::get('/rotasfiltradas/{first}/{last}/{date}/{passanger}','WayController@index');
 
-Route::get('/efetuarcompra/{way_id}/{passenger}/{date}','WayController@max_seats');
+Route::get('/efetuarcompra','OrderController@create');
 
-Route::get('/areacliente/veiculos/addpoltrona/{way_id}/{date_trip}/{seat}','AuxiliarclientController@createseat');
+Route::post('/efetuarcompra/pagar','OrderController@store');
+
+Route::get('/efetuarcompra/{way_id}/{passenger}/{date}/{order_id}','WayController@max_seats');
+
+Route::get('/areacliente/veiculos/addpoltrona/{way_id}/{date_trip}/{seat}/{order_id}','AuxiliarclientController@createseat');
+
+Route::get('/areacliente/comprovante/{way_id}/{date_trip}/{order_id}','AuxiliarclientController@proof_payment');
 
 //rotas para área da empresas
 

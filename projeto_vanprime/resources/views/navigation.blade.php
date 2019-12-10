@@ -1,6 +1,6 @@
 
  <nav class="navbar navbar-inverse navbar-fixed-top" style="background-color: #182c39;" role="navigation">
-
+          @guest
            <div class="row">
              <div class="col-1">
                <a class="navbar-brand" href="/"><img class="logo" src="{{ asset('img/vp-logo.png') }}"></a>
@@ -23,9 +23,6 @@
              <div class="col">
                <a class="navbar-brand" href="#">Cidades mais visitadas</a>
              </div>
-             <div class="col">
-               <a class="navbar-brand" href="/areaempresa">Minha Empresa</a>
-             </div>
              <?php
                  foreach($categories as $c){ //fecth recupere e passe para frente
                    $cat_id=$c["id"];
@@ -36,5 +33,62 @@
                  }
              ?>
           </div>
+          @else
+           <div class="row">
+             <div class="col-1">
+               <a class="navbar-brand" href="/"><img class="logo" src="{{ asset('img/vp-logo.png') }}"></a>
+             </div>
+             <div class="col-7">
+             </div>
+           </div>
+           <div class="row">
+             <div class="col">
+             </div>
+             <div class="col">
+               <a class="navbar-brand" href="/">VanPrime Transportes</a>
+             </div>
+             <div class="col">
+               <a class="navbar-brand" href="#">Cidades mais visitadas</a>
+             </div>
+             @if(Auth::user()->user_role == 'company')
+             <div class="col">
+               <a class="navbar-brand" href="/areaempresa">Minha Empresa</a>
+             </div>
+             @endif
+             @if(Auth::user()->user_role == 'client')
+             <div class="col">
+               <a class="navbar-brand" href="#">Minha Área</a>
+             </div>
+             @endif
+             <?php
+                 foreach($categories as $c){ //fecth recupere e passe para frente
+                   $cat_id=$c["id"];
+                   $cat_title=$c["title"];
+                   echo "<div class='col'>";
+                      echo "<a class='navbar-brand' href='/categoria/$cat_id'>$cat_title</a>";
+                   echo "</div>";
+                 }
+             ?>
+             <div class="col">
+               <li class="nav-item dropdown">
+                   <a id="navbarDropdown" class="navbar-brand" href="#" style="color:white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                       {{ Auth::user()->username }} <span class="caret"></span>
+                   </a>
+
+                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                       <a class="dropdown-item" href="{{ route('logout') }}"
+                          onclick="event.preventDefault();
+                                        document.getElementById('logout-form').submit();">
+                           {{ __('Logout') }}
+                       </a>
+
+                       <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                           @csrf
+                       </form>
+                   </div>
+               </div>
+          </div>
+
+          @endguest
 
      </nav>
