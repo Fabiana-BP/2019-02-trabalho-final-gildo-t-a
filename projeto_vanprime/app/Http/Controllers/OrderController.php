@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use App\Category;
+use App\Passenger;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
@@ -21,8 +22,20 @@ class OrderController extends Controller
      */
     public function index()
     {
-        //
+    if(Auth::user()->user_role == 'client'){
+      $nav=3;
+      $categories=Category::orderBy('title')->get();
+      $orders=Order::orderBy('created_at')->where('user_id','=',Auth::User()->id)->get();
+      $passengers=Array();
+      foreach ($orders as $o) {
+        $passengers[] = $o->passengers->count();
+      }
+
+      return view('client.index',['nav'=>$nav,'categories'=>$categories,'orders'=>$orders, 'passengers'=>$passengers]);
+    }else{
+      return abort(403,'Operação não permitida!');
     }
+  }
 
     /**
      * Show the form for creating a new resource.

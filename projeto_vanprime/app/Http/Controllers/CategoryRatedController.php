@@ -18,20 +18,19 @@ class CategoryRatedController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index($cat)
+    public function index()
     {
 
       //recuperacao de dados
       $categories=Category::orderBy('title')->get();
       $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
       $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
-      $bus_content = DB::table('vehicles')->where('category_id', $cat)
-            ->join('companies','vehicles.company_id','=','companies.id')
+      $bus_content = DB::table('companies')
             ->join('queries','companies.id','=','queries.company_id')
             ->join('users','queries.user_id','=','users.id')
-            ->select('vehicles.category_id','companies.name as cname','companies.image_company as cimage','companies.web_page as cweb',
+            ->select('companies.name as cname','companies.image_company as cimage','companies.web_page as cweb',
             'companies.content as ccontent','companies.phone as cphone',
-            'users.username as uname','users.image_user as uimage','queries.content as ucontent','queries.query_date as udate')
+            'users.username as uname','users.image_user as uimage','queries.content as ucontent','queries.updated_at as udate')
             ->get();
 
       //Passar dados para a view

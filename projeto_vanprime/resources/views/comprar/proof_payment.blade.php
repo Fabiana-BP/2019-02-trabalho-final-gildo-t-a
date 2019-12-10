@@ -3,11 +3,11 @@
   @include('navigation')
 @endsection
 @section('content_part')
-  <div class="form-group container">
+  <div class="form-group container len1">
     <h3>Obrigado pela compra {{Auth::User()->name}}, tenha uma excelente viagem!<h3>
     <br>
     <br>
-  <div class="form-group border">
+  <div class="form-group p-4 card">
     <div class="form-group">
       <h2><strong>Comprovante de Pagamento</strong></h2>
     </div>
@@ -29,7 +29,7 @@
       <h4><strong>Passageiros:<strong></h4>
         <?php $i=1;?>
         @foreach($passengers as $p)
-          <h4>Passageiro {{$i}}: {{$p->nome}} ({{$p->age}} anos) Poltrona: {{$p->seat}}</h4>
+          <h4>Passageiro {{$i}}: {{$p->nome}} ({{$p->age}} anos) - Poltrona: {{$p->seat}}</h4>
           <?php $i=$i+1;?>
         @endforeach
     </div>

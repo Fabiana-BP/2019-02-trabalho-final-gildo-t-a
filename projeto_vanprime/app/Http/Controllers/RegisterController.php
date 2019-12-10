@@ -48,7 +48,7 @@ class RegisterController extends Controller{
       [
         'name'=>'required|min:3|max:255',
         'email'=>'required|min:6|max:255|unique:users',
-        'password' =>'required|min:3|max:255',
+        'password' =>'required|min:8|max:255',
         'username' =>'required|min:3|max:10|unique:users',
         'cpf' =>'required|min:14|max:14|unique:users',
         'phone'=>'required|min:11|max:14',

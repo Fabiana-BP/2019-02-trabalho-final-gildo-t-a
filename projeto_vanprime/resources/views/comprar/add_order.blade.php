@@ -23,7 +23,7 @@
 
     <div class="form-group">
       <label id="label1" for="nome">Nome do Passageiro:</label>
-      <input type="text" class="form-control" id="nome" placeholder="Nome do Passageiro" name="nome" oninput="validateRegisterCompany('name','label1')" >
+      <input type="text" class="form-control" id="nome" placeholder="Nome do Passageiro" name="nome" >
     </div>
 
 

@@ -17,7 +17,6 @@ class CreateQueriesTable extends Migration
             $table->bigIncrements('id');
             $table->unsignedBigInteger('company_id');
             $table->unsignedBigInteger('user_id');
-            $table->date('query_date');
             $table->string('content');
             $table->timestamps();
 

@@ -59,7 +59,7 @@
                             <a class="navbar-brand" href="/">{{ __('VanPrime Transportes') }}</a>
                           </div>
                           <div class="col">
-                            <a class="navbar-brand" href="#">{{ __('Cidades mais visitadas') }}</a>
+                            <a class="navbar-brand" href="/cidadesmaisvisitadas">{{ __('Cidades mais visitadas') }}</a>
                           </div>
                         </div>
                         @else
@@ -70,16 +70,16 @@
                             <a class="navbar-brand" href="/">{{ __('VanPrime Transportes') }}</a>
                           </div>
                           <div class="col">
-                            <a class="navbar-brand" href="#">{{ __('Cidades mais visitadas') }}</a>
+                            <a class="navbar-brand" href="/cidadesmaisvisitadas">{{ __('Cidades mais visitadas') }}</a>
                           </div>
                           @if(Auth::user()->role == 'company')
                           <div class="col">
-                            <a class="navbar-brand" href="#">{{ __('Minha Empresa') }}</a>
+                            <a class="navbar-brand" href="/areaempresa">{{ __('Minha Empresa') }}</a>
                           </div>
                           @endif
                           @if(Auth::user()->role == 'client')
                           <div class="col">
-                            <a class="navbar-brand" href="#">{{ __('Minha Área') }}</a>
+                            <a class="navbar-brand" href="/areacliente/perfil">{{ __('Minha Área') }}</a>
                           </div>
                           @endif
                           <div class="col">
@@ -116,7 +116,7 @@
     <div class="row">
         <div class="col-3">
           <h5>Formas de Pagamento</h5>
-          <img src="{{ asset('img/formas_pagamento.png') }}">
+          <img class="perfil" src="{{ asset('img/formas_pagamento.png') }}">
         </div>
         <div class="col-3">
             <h5>Institucional</h5>

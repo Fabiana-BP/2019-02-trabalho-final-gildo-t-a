@@ -48,7 +48,7 @@
       <div class="row">
           <div class="col-3">
             <h5>Formas de Pagamento</h5>
-            <img src="{{ asset('img/formas_pagamento.png') }}">
+            <img class="perfil" src="{{ asset('img/formas_pagamento.png') }}">
           </div>
           <div class="col-3">
               <h5>Institucional</h5>
@@ -59,22 +59,7 @@
               </ul>
           </div>
           <div class="col-3">
-              <h5>Parceiros</h5>
-              <ul>
-                <?php
-
-                  foreach($categories as $c){ //fecth recupere e passe para frente
-                    $cat_id=$c["id"];
-                    echo "<li>";
-                    echo "<a href='/categoria/$cat_id'>";
-                    echo $c["title"];//igual do banco de dados
-                    echo "</a>";
-                    echo "</li>";
-                  }
-
-                 ?>
-
-              </ul>
+              <h5><a href="/parceiros">Parceiros</a></h5>
           </div>
 
           <div class="col-3">

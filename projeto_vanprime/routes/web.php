@@ -16,19 +16,22 @@ Route::get('/home', 'CategoryController@index')->name('home');
 
 Route::get('/', 'CategoryController@index');
 
+Route::get('/cidadesmaisvisitadas','PrincipalController@showcities');
 //Route::get('/cadastro', 'RegisterController@index');
 
 Route::resource('/cadastro','RegisterController');
 
 //Route::get('/login','LoginController@index');
 
-Route::get('/categoria/{cat_id}','CategoryRatedController@index');
+Route::get('/parceiros','CategoryRatedController@index');
 
 Route::get('/empresas','CompanyController@show_companies_images');
 
 Route::post('/empresas/cadastro','CompanyController@store');
 
 Route::get('/empresas/create','CompanyController@create');
+
+Route::resource('/editar/perfil','UserController');
 
 //rotas para clientes
 
@@ -43,6 +46,20 @@ Route::get('/efetuarcompra/{way_id}/{passenger}/{date}/{order_id}','WayControlle
 Route::get('/areacliente/veiculos/addpoltrona/{way_id}/{date_trip}/{seat}/{order_id}','AuxiliarclientController@createseat');
 
 Route::get('/areacliente/comprovante/{way_id}/{date_trip}/{order_id}','AuxiliarclientController@proof_payment');
+
+Route::get('/areacliente/perfil','AuxiliarclientController@index');
+
+Route::get('/areacliente/minhascompras','OrderController@index');
+
+Route::get('/areacliente/avaliaraempresa/{company_id}','QueryController@create');
+
+Route::post('/areacliente/avaliarempresa','QueryController@store');
+
+Route::post('/areacliente/atualizaravaliacao/{company_id}','QueryController@update');
+
+Route::get('/areacliente/atualizaraavaliacao/{company_id}','QueryController@edit');
+
+Route::get('/areacliente/minhasavaliacoes','QueryController@index');
 
 //rotas para área da empresas
 

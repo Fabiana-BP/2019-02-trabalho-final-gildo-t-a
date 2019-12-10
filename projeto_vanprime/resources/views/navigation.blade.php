@@ -21,18 +21,12 @@
                <a class="navbar-brand" href="/">VanPrime Transportes</a>
              </div>
              <div class="col">
-               <a class="navbar-brand" href="#">Cidades mais visitadas</a>
+               <a class="navbar-brand" href="/cidadesmaisvisitadas">Cidades mais visitadas</a>
              </div>
-             <?php
-                 foreach($categories as $c){ //fecth recupere e passe para frente
-                   $cat_id=$c["id"];
-                   $cat_title=$c["title"];
-                   echo "<div class='col'>";
-                      echo "<a class='navbar-brand' href='/categoria/$cat_id'>$cat_title</a>";
-                   echo "</div>";
-                 }
-             ?>
-          </div>
+             <div class="col">
+               <a class="navbar-brand" href="/parceiros">Empresas conveniadas</a>
+             </div>
+
           @else
            <div class="row">
              <div class="col-1">
@@ -48,7 +42,7 @@
                <a class="navbar-brand" href="/">VanPrime Transportes</a>
              </div>
              <div class="col">
-               <a class="navbar-brand" href="#">Cidades mais visitadas</a>
+               <a class="navbar-brand" href="/cidadesmaisvisitadas">Cidades mais visitadas</a>
              </div>
              @if(Auth::user()->user_role == 'company')
              <div class="col">
@@ -57,18 +51,12 @@
              @endif
              @if(Auth::user()->user_role == 'client')
              <div class="col">
-               <a class="navbar-brand" href="#">Minha Área</a>
+               <a class="navbar-brand" href="/areacliente/perfil">Minha Área</a>
              </div>
              @endif
-             <?php
-                 foreach($categories as $c){ //fecth recupere e passe para frente
-                   $cat_id=$c["id"];
-                   $cat_title=$c["title"];
-                   echo "<div class='col'>";
-                      echo "<a class='navbar-brand' href='/categoria/$cat_id'>$cat_title</a>";
-                   echo "</div>";
-                 }
-             ?>
+             <div class="col">
+               <a class="navbar-brand" href="/parceiros">Empresas conveniadas</a>
+             </div>
              <div class="col">
                <li class="nav-item dropdown">
                    <a id="navbarDropdown" class="navbar-brand" href="#" style="color:white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

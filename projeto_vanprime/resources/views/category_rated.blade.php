@@ -36,10 +36,10 @@
 
               if($cont<4 && $k->cname == $b->cname && (empty($comp) || (!in_array($k->cname,$comp)))){
                 $cont=$cont+1;
-                echo "<div class='card'>";
-                echo "<img src='/img/users/";
-                echo $k->uimage;
-                echo "' class='card-img-personal text-xl-center' alt='$k->uname'>";
+                ?>
+                <div class="card">
+                <img src="{{url('storage/profiles/'.$k->uimage)}}" class="card-img-personal text-xl-center"  alt="$k->uname">
+                <?php
                 echo "<div class='card-body'>";
                 echo "<h5 class='card-title'>";
                 echo $k->uname;

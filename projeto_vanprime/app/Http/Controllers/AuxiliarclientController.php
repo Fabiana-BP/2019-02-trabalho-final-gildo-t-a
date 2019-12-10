@@ -9,6 +9,7 @@ use App\Way;
 use App\Nocustomer;
 use App\Passenger;
 use App\Order;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
@@ -44,7 +45,20 @@ class AuxiliarclientController extends Controller
       }else{
         return abort(403,'Operação não permitida!');
       }
-  }
+    }
+
+ public function index(){
+   if(Auth::User()->user_role == "client"){
+     $categories=Category::orderBy('title')->get();
+     $user=User::find(Auth::User()->id);
+     $nav=1;
+     return view('client.index',['nav'=>$nav,'categories'=>$categories,'user'=>$user]);
+   }else{
+     return abort(403,'Operação não permitida!');
+   }
+
+ }
+
 
 
 }

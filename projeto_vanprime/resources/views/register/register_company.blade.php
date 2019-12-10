@@ -7,7 +7,7 @@
 
 
   <div class="container len">
-    <div class="well">
+    <div class="card">
         <div class="text-xl-center">
           <h2>Cadastrar Empresa</h2>
         </div>
