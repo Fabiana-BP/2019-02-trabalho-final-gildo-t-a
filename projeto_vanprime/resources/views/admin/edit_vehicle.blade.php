@@ -12,7 +12,7 @@
 
         <div class="form-group">
           <label id="label2" for="category_id">Categoria:</label>
-          <select id="category_id" class="custom-select form-control box_style" name="subject_id" >
+          <select id="category_id" class="custom-select form-control box_style" name="category_id" >
           <option class="form-control" value="0" disabled selected>Selecione</option>
           @foreach ($categories as $c)
             <option class="form-control" value="{{ $c->id }}"

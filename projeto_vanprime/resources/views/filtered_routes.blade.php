@@ -87,14 +87,15 @@ echo "<tbody>";
     $pass_rest=$f->max_seats-$oseats;
     echo "<tr>";
     $wayid=$f->ways_id;
-    $price_discount=$f->price - ($f->price * $f->discount);
+    $price=$f->price * 1.01;
+    $price_discount=$price - ($f->price * $f->discount);
     if($pass_rest>=$passenger){
       echo "<td>$f->cname</td>";
       echo "<td>$f->timetable</td>";
       echo "<td>$f->first_city / $f->last_city</td>";
 
       echo "<td>$pass_rest</td>";
-      echo "<td>$f->price</td>";
+      echo "<td>$price</td>";
       echo "<td>$price_discount</td>";
       $way_id=$fi->ways_id;
       session(['acao' => 'comprar','way_id'=>$way_id,'passenger'=>$passenger,'date'=>$date,'price'=>$price_discount]);

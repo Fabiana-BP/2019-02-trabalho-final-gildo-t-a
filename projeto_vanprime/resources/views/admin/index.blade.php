@@ -5,9 +5,17 @@
 @section('content_part')
 
 <div>
-  <h1>EMPRESA</h1>
+  <div class="row">
+    <div class="col-1">
+      <img class="perfil" src="{{url('storage/companies/'.$company->image_company)}}" alt="{{$company->name}}">
+    </div>
+    <div class="col-11">
+      <h1>{{$company->name}}</h1>
+      <h5>Bem Vindo(a), {{Auth::User()->username}}!</h5>
+    </div>
+  </div>
 
-  <h5>Bem Vindo usuário!</h5>
+
 </div>
 <div class="row">
 
@@ -23,8 +31,8 @@
       @include('admin.show_vehicle')
     @endif
     @if($nav==4)
-    <div class="container diferent_container2 len">
-      <div class="well">
+    <div class="container len">
+      <div>
           <div class="text-xl-center">
             <h2>Atualizar Veículo</h2>
           </div>
@@ -38,6 +46,16 @@
     @if($nav==6)
       @include('admin.add_seats')
     @endif
+    @if($nav==7)
+      @include('admin.routes')
+    @endif
+    @if($nav==8)
+      @include('admin.define_routes')
+    @endif
+    @if($nav==9)
+      @include('admin.edit_way')
+    @endif
+
 
   </div>
   <div class="col-md-2 diferent_container1">

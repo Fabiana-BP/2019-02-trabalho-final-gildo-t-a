@@ -46,30 +46,19 @@
 
   <div>
       <div class="row">
-          <div class="col-3">
+          <div class="col-4 text-xl-center">
             <h5>Formas de Pagamento</h5>
-            <img class="perfil" src="{{ asset('img/formas_pagamento.png') }}">
+            <img class="logo1 text-xl-center" src="{{ asset('img/formas_pagamento.png') }}">
           </div>
-          <div class="col-3">
-              <h5>Institucional</h5>
-              <ul>
-                 <li><a href="#">Quem somos</a></li>
-                 <li><a href="#">Serviços</a></li>
-                 <li><a href="#">Contato</a></li>
+          <div class="col-4 text-xl-center">
+            <ul>
+              <h5><li><a class="text-xl-center" href="/institucional">Institucional</a></li></h5>
               </ul>
           </div>
-          <div class="col-3">
-              <h5><a href="/parceiros">Parceiros</a></h5>
+          <div class="col-4 text-xl-center">
+              <h5><a class="text-xl-center" href="/parceiros">Parceiros</a></h5>
           </div>
 
-          <div class="col-3">
-              <h5>Termos</h5>
-              <ul>
-                  <li><a href="#">Termos de Serviço</a></li>
-                  <li><a href="#">Termos de Uso</a></li>
-                  <li><a href="#">Política de Privacidade</a></li>
-              </ul>
-          </div>
       </div>
   </div>
   <div>

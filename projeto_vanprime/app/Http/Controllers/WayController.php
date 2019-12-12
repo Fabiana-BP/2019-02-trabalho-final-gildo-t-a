@@ -80,9 +80,40 @@ class WayController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($vehicle_id)
     {
-        //
+      if(Auth::check()){
+        if(Auth::user()->user_role=='company'){
+          $company=Company::find(Auth::User()->company);
+          $municipios=DB::table('Municipio')->orderBy('Nome')->get();
+          $nav=8;
+          $vehicle=Vehicle::find($vehicle_id);
+
+          return view('admin.index',['municipios'=>$municipios,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle]);
+
+        }else{
+          return abort(403,'Operação não permitida!');
+        }
+      }else{
+        return redirect('/login');
+      }
+    }
+
+    public function showroutes($vehicle_id){
+      if(Auth::check()){
+        if(Auth::user()->user_role=='company'){
+          $company=Company::find(Auth::User()->company);
+          $nav=7;
+          $vehicle=Vehicle::find($vehicle_id);
+          $ways=Way::orderBy('departure_city')->orderBy('stop_city')->where('vehicle_id','=',$vehicle_id)->get();
+
+          return view('admin.index',['ways'=>$ways,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle]);
+        }else{
+          return abort(403,'Operação não permitida!');
+        }
+      }else{
+        return redirect('/login');
+      }
     }
 
     /**
@@ -93,7 +124,44 @@ class WayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+      if(Auth::check()){
+        if(Auth::user()->user_role=='company'){
+          //validar
+          //dd($request);
+          $validatedData = $request->validate(
+            [
+              'vehicle_id'=>'required|integer|exists:vehicles,id',
+              'departure_city'=>'required|max:255',
+              'stop_city' =>'required|max:255',
+              'price' =>'required|numeric',
+              'discount' =>'numeric',
+              'timetable'=>'required|date_format:H:i',
+            ]);
+            if(!empty($request->discount) && $request->discount>1){
+              session()->flash('mensagem1','Valor inválido de desconto!');
+              return redirect()->back();
+            }
+          $save=Way::create($request->all());
+
+          if($save){
+            session()->flash('mensagem','Cadastro realizado com sucesso!');
+            $company=Company::find(Auth::User()->company);
+            $nav=7;
+            $vehicle=Vehicle::find($request->vehicle_id);
+            $ways=Way::orderBy('departure_city')->orderBy('stop_city')->where('vehicle_id','=',$vehicle->id)->get();
+
+            return view('admin.index',['ways'=>$ways,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle]);
+          }else{
+            session()->flash('mensagem1','Desculpe, ocorreu um erro. Por favor, tente mais tarde!');
+            return redirect()->back();
+          }
+
+        }else{
+          return abort(403,'Operação não permitida!');
+        }
+      }else{
+        return redirect('/login');
+      }
     }
 
     /**
@@ -113,9 +181,24 @@ class WayController extends Controller
      * @param  \App\Way  $way
      * @return \Illuminate\Http\Response
      */
-    public function edit(Way $way)
+    public function edit($way)
     {
-        //
+      if(Auth::check()){
+        if(Auth::user()->user_role=='company'){
+          $company=Company::find(Auth::User()->company);
+          $municipios=DB::table('Municipio')->orderBy('Nome')->get();
+          $nav=9;
+          $way=Way::find($way);
+          $vehicle=$way->vehicle;
+
+          return view('admin.index',['municipios'=>$municipios,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle,'way'=>$way]);
+
+        }else{
+          return abort(403,'Operação não permitida!');
+        }
+      }else{
+        return redirect('/login');
+      }
     }
 
     /**
@@ -125,9 +208,56 @@ class WayController extends Controller
      * @param  \App\Way  $way
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Way $way)
+    public function update(Request $request,$way)
     {
-        //
+      if(Auth::check()){
+        if(Auth::user()->user_role=='company'){
+          //validar
+          //dd($request);
+          $validatedData = $request->validate(
+            [
+              'vehicle_id'=>'required|integer|exists:vehicles,id',
+              'departure_city'=>'required|max:255',
+              'stop_city' =>'required|max:255',
+              'price' =>'required|numeric',
+              'discount' =>'numeric',
+              'timetable'=>'required',
+            ]);
+            if(!empty($request->discount) && $request->discount>1){
+              session()->flash('mensagem1','Valor inválido de desconto!');
+              return redirect()->back();
+            }
+            //echo $request->vehicle_id;
+            //echo $way;
+          //  dd($request);
+          $way=Way::find($way);
+          $way->vehicle_id=$request->vehicle_id;
+          $way->departure_city=$request->departure_city;
+          $way->stop_city=$request->stop_city;
+          $way->price=$request->price;
+          $way->discount=$request->discount;
+          $way->timetable=$request->timetable;
+          $save = $way->save();//persiste no bd
+
+          if($save){
+            session()->flash('mensagem','Atualização realizada com sucesso!');
+            $company=Company::find(Auth::User()->company);
+            $nav=7;
+            $vehicle=$way->vehicle;
+            $ways=Way::orderBy('departure_city')->orderBy('stop_city')->where('vehicle_id','=',$vehicle->id)->get();
+
+            return view('admin.index',['ways'=>$ways,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle]);
+          }else{
+            session()->flash('mensagem1','Desculpe, ocorreu um erro. Por favor, tente mais tarde!');
+            return redirect()->back();
+          }
+
+        }else{
+          return abort(403,'Operação não permitida!');
+        }
+      }else{
+        return redirect('/login');
+      }
     }
 
     /**
@@ -136,8 +266,41 @@ class WayController extends Controller
      * @param  \App\Way  $way
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Way $way)
+    public function destroy($way)
     {
-        //
+      if(Auth::check()){
+      if(Auth::user()->user_role=="company"){
+        $way=Way::find($way);
+        //validação (pode ser excluído?)
+        $vehicle=$way->vehicle;
+        $nocustomers=$way->nocustomers->count();
+        $orders=$way->orders->count();
+       if($nocustomers<1 && $orders<1 ){
+          $way->delete();
+          session()->flash('mensagem','Rota excluída com sucesso!');
+          $company=Company::find(Auth::User()->company);
+          $nav=7;
+
+          $ways=Way::orderBy('departure_city')->orderBy('stop_city')->where('vehicle_id','=',$vehicle->id)->get();
+
+          return view('admin.index',['ways'=>$ways,'company'=>$company,'nav'=>$nav,'vehicle'=>$vehicle]);
+        }
+
+        session()->flash('mensagem','Rota não pode ser excluída!');
+        return redirect()->back();
+      }else{
+        return abort(403,'Operação não permitida!');
+      }
+    }else{
+      return redirect()->route('login');
     }
+    }
+
+    public function willdestroy($way){
+      $way=Way::find($way);
+      $company=Company::find(Auth::User()->company);
+      return view('admin.delete_route',['way'=>$way,'company'=>$company]);
+    }
+
+
 }

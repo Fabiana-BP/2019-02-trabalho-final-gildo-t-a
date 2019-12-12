@@ -62,7 +62,6 @@ class RegisterController extends Controller{
       $u->name=$request->name;
       $u->cpf=$request->cpf;
       $u->phone=$request->phone;
-      $u->phone=$request->phone;
       $u->user_role=$request->user_role;
       $u->password= Hash::make($request->password);
       $username=$request->username;

@@ -23,10 +23,21 @@ class CategoryController extends Controller
              $where = session()->pull('function',[]);
           if(Auth::check()){
             if(Auth::user()->user_role=='company'){
-              $nav=2;
+              if(empty(Auth::user()->company)){
+                return view('register.register_company',['username'=>Auth::User()->username]);
+              }
+              $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
+              $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
+              //echo $sources;
+              $companies=Company::orderBy('name')->get();
               $categories=Category::orderBy('title')->get();
-              $vehicles=Vehicle::orderBy('board')->get();
-              return view('admin.index',['categories'=>$categories,'nav'=>$nav,'vehicles'=>$vehicles]);
+              return view('index',['categories'=>$categories,'companies'=>$companies,'sources'=>$sources,'destinations'=>$destinations]);
+              /*
+              $nav=2;
+              $company=Company::find(Auth::User()->company);
+              $categories=Category::orderBy('title')->get();
+              $vehicles=Vehicle::orderBy('board')->where('company_id','=',Auth::User()->company)->get();
+              return view('admin.index',['company'=>$company,'nav'=>$nav,'vehicles'=>$vehicles]);*/
             }else{
             //  echo "teste";
              //dd(session()->all());

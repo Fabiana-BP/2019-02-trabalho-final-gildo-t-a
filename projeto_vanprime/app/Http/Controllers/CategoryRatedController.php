@@ -25,16 +25,17 @@ class CategoryRatedController extends Controller
       $categories=Category::orderBy('title')->get();
       $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
       $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
-      $bus_content = DB::table('companies')
+      $companies=Company::orderBy('name')->get();
+      /*$bus_content = DB::table('companies')
             ->join('queries','companies.id','=','queries.company_id')
             ->join('users','queries.user_id','=','users.id')
             ->select('companies.name as cname','companies.image_company as cimage','companies.web_page as cweb',
             'companies.content as ccontent','companies.phone as cphone',
             'users.username as uname','users.image_user as uimage','queries.content as ucontent','queries.updated_at as udate')
-            ->get();
+            ->get();*/
 
       //Passar dados para a view
-      return view('category_rated',compact('bus_content','categories','sources','destinations'));
+      return view('category_rated',compact('companies','categories','sources','destinations'));
 
     }
 

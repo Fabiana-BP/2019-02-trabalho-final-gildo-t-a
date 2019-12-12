@@ -21,7 +21,7 @@
     <div>
       <div class="container diferent_container1">
         <div class="well text-xl-center">
-          <a style="color:black" href="#"><h4>VEJA CIDADES MAIS VISITADAS</h4></a>
+          <a style="color:black" href="/cidadesmaisvisitadas"><h4>VEJA CIDADES MAIS VISITADAS</h4></a>
         </div>
       </div>
 
@@ -37,7 +37,7 @@
               <p>A VanPrime Transportes oferece espaço para a sua
                 empresa vender passagens/reservas de ônibus.</p>
                 <h5>Venha fazer parte do nosso time!</h5>
-                <input class="btn btn-primary text-xl-center" type="button" name="info" id="info" value="Saiba mais">
+                <a class="btn btn-primary text-xl-center" href="/sejanossoparceiro">Saiba mais</a>
               </div>
             </div>
           </div>
@@ -46,7 +46,7 @@
         </div>
 
         <div class="well text-xl-center">
-          <h4>BUSQUE PASSAGENS POR EMPRESAS</h4>
+          <h4>PARCEIROS</h4>
           @include('image_companies')
         </div>
 

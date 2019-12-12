@@ -17,11 +17,12 @@ Route::get('/home', 'CategoryController@index')->name('home');
 Route::get('/', 'CategoryController@index');
 
 Route::get('/cidadesmaisvisitadas','PrincipalController@showcities');
-//Route::get('/cadastro', 'RegisterController@index');
+
+Route::get('/sejanossoparceiro','PrincipalController@bepartner');
+
+Route::get('/institucional','PrincipalController@whoweare');
 
 Route::resource('/cadastro','RegisterController');
-
-//Route::get('/login','LoginController@index');
 
 Route::get('/parceiros','CategoryRatedController@index');
 
@@ -76,3 +77,29 @@ Route::resource('/areaempresa/veiculos/poltronas','NocustomerController');
 Route::post('/areaempresa/veiculos/data_viagem/poltronas','AuxiliarController@searcharmchairs')->name('form-adm-armchairs');
 
 Route::get('/areaempresa/veiculos/{date_trip}/{way_id}','AuxiliarController@searcharmchairsback');
+
+Route::get('/areaempresa/rotas/definirrota/{vehicle_id}','WayController@create');
+
+Route::post('/areaempresa/rotas/definirarota/{way_id}','WayController@store');
+
+Route::get('/areaempresa/rotas/editrota/{way_id}','WayController@edit');
+
+Route::patch('/areaempresa/rotas/atualizarrota/{way_id}','WayController@update');
+
+Route::delete('/areaempresa/rotas/deletarrota/{way_id}','WayController@destroy')->name('form_delete');
+
+Route::get('/areaempresa/rotas/desejadeletarrota/{way_id}','WayController@willdestroy');
+
+Route::get('/areaempresa/rotas/{vehicle_id}','WayController@showroutes');
+
+Route::get('/areaempresa/visualizarperfil/{company_id}','CompanyController@show');
+
+Route::get('/areaempresa/editarperfil/{company_id}','CompanyController@edit');
+
+Route::patch('/areaempresa/atualizarperfil/{company_id}','CompanyController@update');
+
+Route::get('/areaempresa/relatorios','QueryController@index');
+
+Route::get('/areaempresa/relatorios/avaliacoes','QueryController@index');
+
+Route::get('/areaempresa/relatorios/vendas','AuxiliarController@totalvendas');

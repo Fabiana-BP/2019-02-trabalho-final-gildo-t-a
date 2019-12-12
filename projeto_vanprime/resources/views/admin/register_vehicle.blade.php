@@ -1,15 +1,11 @@
-  <div class="container diferent_container2 len">
-    <div class="well">
+  <div class="container card len">
+    <div>
         <div class="text-xl-center">
           <h2>Cadastrar Veículo</h2>
         </div>
         <form id=formRegister action="{{ route('veiculos.store') }}" method="post" enctype="multipart/form-data">
 
         @csrf
-        <div class="form-group">
-          <label  for="company_id">id da empresa (provisório):</label>
-          <input type="text" class="form-control" id="company_id" name="company_id">
-        </div>
 
           <div class="form-group">
             <label id="label1" for="board">Placa:</label>

@@ -26,7 +26,10 @@ class QueryController extends Controller
           return view('client.index',['nav'=>$nav,'categories'=>$categories,'queries'=>$queries]);
 
         }else{
-          return abort(403,'Operação não permitida!');
+          $queries=Query::orderBy('updated_at')->where('company_id','=',Auth::User()->company)->get();
+          $company=Company::find(Auth::User()->company);
+          $nav=1;
+          return view('admin.index_report',['nav'=>$nav,'company'=>$company,'queries'=>$queries]);
         }
 
       }else{
@@ -43,11 +46,10 @@ class QueryController extends Controller
     {
       if(Auth::check()){
         if(Auth::user()->user_role == "client"){
-          $categories=Category::orderBy('title')->get();
           $company=Company::find($company_id);
           //echo $company;
          $nav=4;
-          return view('client.index',['nav'=>$nav,'categories'=>$categories,'company'=>$company]);
+          return view('client.index',['nav'=>$nav,'company'=>$company]);
 
         }else{
           return abort(403,'Operação não permitida!');

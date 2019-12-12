@@ -6,6 +6,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Way extends Model
 {
+
+  /**
+   * The attributes that are mass assignable.
+   *
+   * @var array
+   */
+  protected $fillable = [
+      'vehicle_id', 'departure_city', 'stop_city','timetable','price','discount',
+  ];
     // 1:N -> armchairs
     public function armchairs(){
       return $this->hasMany('App\Armchair');

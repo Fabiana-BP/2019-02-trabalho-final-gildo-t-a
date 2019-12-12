@@ -2,7 +2,7 @@ function validateRegisterUser(campo,label) {
 
   let n = document.getElementById(campo);
   let aux=0;
-  if (( n.value.length == 0 ) ||(campo == "cpf" && n.value.length!=14) || (campo == "name" && n.value.length<3)
+  if (( n.value.length == 0 ) ||(campo == "cpf" && n.value.length!=14) || (campo == "name" && n.value=="")
   ||(campo=="email" && n.value.length<6)||(campo=="password" && n.value.length<3) ||(campo=="password" && n.value.length<3)
   ||(campo=="phone" && n.value.length<11 && n.value.length>14) || (campo == "username" && (n.value.indexOf(" ") >= 0)
   ||(n.value.length<3 && n.value.length>10))){
@@ -17,7 +17,7 @@ function validateRegisterUser(campo,label) {
 
 
     // Finalizar
-    n.value = "";
+    //n.value = "";
     n.focus();
     return false;
   }

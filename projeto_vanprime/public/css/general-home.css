@@ -8,6 +8,9 @@
 .perfil{
   width: 100%;
 }
+.perfilpequeno{
+  width: 10%;
+}
 
 .len{
   margin-top: 45px;
@@ -19,6 +22,21 @@
   border-top-left-radius: calc(0.25rem - 1px);
   border-top-right-radius: calc(0.25rem - 1px);
 }
+
+.card-img-personal2 {
+  width: 7%;
+  text-align: center;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
+.card-img-personal1 {
+  width: 30%;
+  text-align: center;
+  border-top-left-radius: calc(0.25rem - 1px);
+  border-top-right-radius: calc(0.25rem - 1px);
+}
+
 
 .len1{
   margin-top: 100px;

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Category;
 use App\User;
+use App\Company;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -21,7 +22,14 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+      if(Auth::User()->user_role == "company"){
+        $user=User::find(Auth::User()->id);
+        $company=Company::find(Auth::User()->company);
+        $nav=3;
+        return view('admin.index_profile',['nav'=>$nav,'company'=>$company,'user'=>$user]);
+      }else{
+        return abort(403,'Operação não permitida!');
+      }
     }
 
     /**
@@ -69,6 +77,10 @@ class UserController extends Controller
       if(Auth::User()->user_role == "client"){
         $nav=2;
         return view('client.index',['nav'=>$nav,'categories'=>$categories,'user'=>$user]);
+      }else{
+        $company=Company::find(Auth::User()->company);
+        $nav=4;
+        return view('admin.index_profile',['nav'=>$nav,'company'=>$company,'user'=>$user]);
       }
 
     }
@@ -102,9 +114,7 @@ class UserController extends Controller
       $u->cpf=$request->cpf;
       $u->phone=$request->phone;
       $u->email=$request->email;
-      if($u->password!="        "){
-        $u->password= Hash::make($request->password);
-      }
+
       if(!empty($request->image_user)){
           //dd($request);
       //salvar foto em storage/app/public/profiles/
@@ -136,19 +146,28 @@ class UserController extends Controller
                         }
 
       }
+      try{
+        $save=$u->save();
+      }catch(Exception $e){
+        session()->flash('mensagem1','Não foi possível atualizar o cadastro, por favor revise os dados ou tente mais tarde!');
+        return redirect()->back();
+      }
 
-      $save=$u->save();
 
-      if(Auth::User()->user_role == "client"){
         if($save){
-          $nav=1;
-          session()->flash('mensagem','Cadastro Atualizado com Sucesso!');
-          return view('client.index',['nav'=>$nav,'categories'=>$categories]);
+          if(Auth::User()->user_role == "client"){
+            $nav=1;
+            session()->flash('mensagem','Cadastro Atualizado com Sucesso!');
+            return view('client.index',['nav'=>$nav,'categories'=>$categories]);
+          }else{//company
+            $nav=3;
+            $company=Company::find(Auth::User()->company);
+            return view('admin.index_profile',['nav'=>$nav,'company'=>$company,'user'=>$u]);
+          }
         }else{
           session()->flash('mensagem1','Não foi possível atualizar o cadastro, por favor tente mais tarde!');
           return redirect()->back();
         }
-      }
     }
 
     /**

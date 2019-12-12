@@ -17,7 +17,7 @@
         <select id="way_id" class="custom-select box_style form-control box_style" name="way_id">
             <option class="form-control" value="0" disabled selected>Selecione</option>
           @foreach ($ways as $w)
-            <option class="form-control" value="{{ $w->id }}">{{ $w->departure_city }}-{{$w->stop_city}} {{$w->timetable}}</option>
+            <option class="form-control" value="{{ $w->id }}">{{ $w->departure_city }}  /  {{$w->stop_city}} {{$w->timetable}}</option>
           @endforeach
         </select>
       </div>

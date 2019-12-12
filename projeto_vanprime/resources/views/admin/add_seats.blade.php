@@ -14,7 +14,7 @@
       <label class="box_style" for="way_id">Rota:</label>
       <select id="way_id" class="custom-select box_style form-control box_style" name="way_id" disabled>
         @foreach ($ways as $w)
-          <option class="form-control" value="{{ $w->id }}">{{ $w->departure_city }}-{{$w->stop_city}} {{$w->timetable}}
+          <option class="form-control" value="{{ $w->id }}">{{ $w->departure_city }}  /  {{$w->stop_city}} {{$w->timetable}}
             @if($way_id == $w->way_id)
               selected
               @endif
@@ -97,6 +97,6 @@
   }
 
   echo "</div>";
-  echo "<input type='button' value='Voltar' class='btn btn-success box_style' onclick='location.href = history.go(-1);'>";
+  echo "<a href='/areaempresa/veiculos/data_viagem/$vehicle->id' class='btn btn-success box_style'>Voltar</a>";
   ?>
 </div>

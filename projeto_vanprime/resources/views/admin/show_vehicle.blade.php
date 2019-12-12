@@ -27,11 +27,11 @@
 
         <div class="form-group">
           <label for="created_at">Cadastrado em:</label>
-          <input type="text" name="created_at" value="{{$vehicle->created_at}}" class="form-control" disabled>
+          <input type="text" name="created_at" value="{{date("d/m/Y", strtotime($vehicle->created_at))}}" class="form-control" disabled>
         </div>
         <div class="form-group">
           <label for="updated_at">Atualizado em:</label>
-          <input type="text" name="updated_at" value="{{$vehicle->updated_at}}" class="form-control" disabled>
+          <input type="text" name="updated_at" value="{{date("d/m/Y", strtotime($vehicle->updated_at))}}" class="form-control" disabled>
         </div>
 
         <a href="{{route('veiculos.index')}}" class="btn btn-primary ">Voltar</a>

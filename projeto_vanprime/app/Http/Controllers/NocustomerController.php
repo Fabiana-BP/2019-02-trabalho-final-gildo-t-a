@@ -6,6 +6,7 @@ use App\Nocustomer;
 use App\Armchair;
 use Illuminate\Http\Request;
 use App\Order;
+use App\Company;
 use App\Passenger;
 use Illuminate\Support\Facades\Auth;
 
@@ -56,29 +57,30 @@ class NocustomerController extends Controller
 
           Nocustomer::create($request->all());
 
-          if(Auth::user()->user_role == "company"){
+          if(Auth::User()->user_role == "company"){
             session()->flash('mensagem','Poltrona inserida com Sucesso!');
+            $company=Company::find(Auth::User()->company);
 
-            return redirect("/areaempresa/veiculos/$request->date_trip/$request->way_id");
-        }else{
-          $validatedData = $request->validate(
-            [
-              'nome'=>'required|String',
-              'seat'=>'required|integer',
-              'age'=>'required|integer',
-              'order_id'=>'required|integer',
-            ]);
+            return redirect("/areaempresa/veiculos/$request->date_trip/$request->way_id")->with('company',$company);
+          }else{
+            $validatedData = $request->validate(
+              [
+                'nome'=>'required|String',
+                'seat'=>'required|integer',
+                'age'=>'required|integer',
+                'order_id'=>'required|integer',
+              ]);
 
-            //gravar tabela nocustomers
-            Passenger::create($request->all());
-            session()->flash('mensagem','Poltrona selecionada com Sucesso!');
+              //gravar tabela nocustomers
+              Passenger::create($request->all());
+              session()->flash('mensagem','Poltrona selecionada com Sucesso!');
 
-            //verificar se o número de passagens confere com a ordem permitida
-            $passengerOrder=Passenger::orderBy('id')->where('order_id','=',$request->order_id)->count();
-            $passengerMax=session('passenger');
-          //  echo "ja feitos: $passengerOrder     maximo= $passengerMax";
-          //  $ok=$passengerOrder<$passengerMax;
-          //  echo $ok;
+              //verificar se o número de passagens confere com a ordem permitida
+              $passengerOrder=Passenger::orderBy('id')->where('order_id','=',$request->order_id)->count();
+              $passengerMax=session('passenger');
+              //  echo "ja feitos: $passengerOrder     maximo= $passengerMax";
+              //  $ok=$passengerOrder<$passengerMax;
+              //  echo $ok;
 
             if($passengerOrder<$passengerMax){//comprovante de pagamento
               return redirect("/efetuarcompra/$request->way_id/$passengerMax/$request->date_trip/$request->order_id");
