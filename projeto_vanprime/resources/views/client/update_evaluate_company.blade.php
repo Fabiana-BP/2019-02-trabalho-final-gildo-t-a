@@ -3,11 +3,13 @@
         <h2>Avaliar empresa</h2>
       </div>
       <?php
-      $method="/areacliente/atualizaravaliacao/$query->company_id";
+      
+      $method="/areacliente/atualizaravaliacao/$query->id";
       ?>
       <form  action= "{{$method}}" method="POST" enctype="multipart/form-data">
 
       @csrf
+      @method('PATCH')
       <div class="form-group">
         <label  for="company_id">Empresa: {{$query->company->name}}</label>
         <input type="hidden" class="form-control" value="{{$query->company->id}}" id="company_id" name="company_id">

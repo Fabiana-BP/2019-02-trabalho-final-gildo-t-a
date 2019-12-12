@@ -7,9 +7,25 @@ use App\Category;
 use App\Company;
 use App\Way;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class PrincipalController extends Controller
 {
+
+  public function autenticarcodigo(){
+    return view('auth.enter_code');
+  }
+
+  public function verificacodigo(Request $request){
+    //mandar e-mail com código aleatório
+    $code=session()->pull('random', []);
+    if($request->code == $code){
+      session(['codeok' => 'codeok']);
+      redirect('/home');
+    }else{
+      redirect()->back();
+    }
+  }
 
   public function bepartner(){
     $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();

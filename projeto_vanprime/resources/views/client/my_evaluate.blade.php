@@ -19,11 +19,11 @@
         @foreach ($queries as $q)
         <tr>
           <td>{{$q->company->name}}</td>
-          <td>{{$q->created_at}}</td>
-          <td>{{$q->updated_at}}</td>
+          <td>{{date("d/m/Y", strtotime($q->created_at))}}</td>
+          <td>{{date("d/m/Y", strtotime($q->updated_at))}}</td>
           <td>{{$q->content}}</td>
-          <?php $id=$q->company_id;
-          $end="/areacliente/atualizaraavaliacao/$id";
+          <?php $company_id=$q->company->id;
+          $end="/areacliente/atualizaraavaliacao/$company_id";
           echo "<td><a href='$end' class='btn btn-success'>Atualizar</a></td>";
           ?>
 

@@ -93,10 +93,8 @@
                         </div>
 
                         <div class="form-group row">
-                          <label for="image_user" class="col-md-4 col-form-label text-md-right">Foto</label>
-
                           <div class="col-md-6">
-                            <input type="file" name="image_user" id="image_user">
+                            <input type="hidden" name="image_user" id="image_user">
                           </div>
                         </div>
 

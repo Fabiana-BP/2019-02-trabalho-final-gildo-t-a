@@ -41,6 +41,10 @@ class AuxiliarController extends Controller
     if(Auth::User()->user_role=="company"){
       $date_trip=$newrequest->date_trip;
       $way_id=$newrequest->way_id;
+      if(empty($date_trip) || empty($way_id)){
+        session()->flash('mensagem1','Por favor, preencha todos os campos!');
+        return redirect()->back();
+      }
       $vehicle=Vehicle::orderBy('board')->where('board','=',$newrequest->board)->first();
       $ways=Way::orderBy('departure_city')->where('vehicle_id','=',$vehicle->id)->get();
       $armchairs=Nocustomer::orderBy('way_id')->whereRaw('date_trip  = ? and way_id = ?',[$date_trip,$way_id])->select('seat')->get();

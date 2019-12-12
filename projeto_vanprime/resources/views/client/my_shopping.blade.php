@@ -20,8 +20,8 @@
         <?php $i=0; ?>
         @foreach ($orders as $o)
         <tr>
-          <td>{{$o->created_at}}</td>
-          <td>{{$o->date_trip}}</td>
+          <td>{{date("d/m/Y", strtotime($o->created_at))}}</td>
+          <td>{{date("d/m/Y", strtotime($o->date_trip))}}</td>
           <td>{{$o->cost}}</td>
           <td>{{$o->way->timetable}} - {{$o->way->departure_city}} / {{$o->way->stop_city}}</td>
           <td>{{$o->way->vehicle->company->name}}</td>

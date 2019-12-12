@@ -58,7 +58,6 @@
                <a class="navbar-brand" href="/parceiros">Empresas conveniadas</a>
              </div>
              <div class="col">
-               <li class="nav-item dropdown">
                    <a id="navbarDropdown" class="navbar-brand" href="#" style="color:white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                        {{ Auth::user()->username }} <span class="caret"></span>
                    </a>

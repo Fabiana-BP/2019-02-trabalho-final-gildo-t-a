@@ -158,7 +158,7 @@ class UserController extends Controller
           if(Auth::User()->user_role == "client"){
             $nav=1;
             session()->flash('mensagem','Cadastro Atualizado com Sucesso!');
-            return view('client.index',['nav'=>$nav,'categories'=>$categories]);
+            return view('client.index',['nav'=>$nav,'categories'=>$categories,'user'=>$u]);
           }else{//company
             $nav=3;
             $company=Company::find(Auth::User()->company);

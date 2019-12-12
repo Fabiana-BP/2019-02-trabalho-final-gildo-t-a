@@ -7,6 +7,7 @@ use App\Category;
 use App\Company;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class QueryController extends Controller
 {
@@ -74,8 +75,10 @@ class QueryController extends Controller
               'company_id'=>'required|integer|exists:companies,id',
               'content'=>'required|max:255',
             ]);
-            $query=Query::orderBy('id')->whereRaw('user_id = ? and company_id = ?',[$request->company_id,Auth::User()->id])->get();
-            if(!empty($query)){//já avaliou a empresa
+            $query=DB::table('queries')->whereRaw('user_id = ? and company_id = ?',[Auth::User()->id,$request->company_id])->get();
+
+
+            if(sizeof($query)>0){//já avaliou a empresa
               session()->flash('mensagem1','Você já avaliou essa empresa antes. Se desejar atualizar o comentário, acesse: Minhas Avaliações!');
               return redirect()->back();
             }
@@ -119,13 +122,14 @@ class QueryController extends Controller
      * @param  \App\Query  $query
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit($company_id)
     {
       if(Auth::check()){
         if(Auth::user()->user_role == "client"){
-          $query=Query::find($id);
+          $query=Query::orderBy('id')->where('company_id','=',$company_id)->first();
           $nav=6;
           $categories=Category::orderBy('title')->get();
+        //  echo $query;
           return view('client.index',['nav'=>$nav,'categories'=>$categories,'query'=>$query]);
         }else{
           return abort(403,'Operação não permitida!');
@@ -147,6 +151,7 @@ class QueryController extends Controller
     {
       if(Auth::check()){
         if(Auth::user()->user_role == "client"){
+        //  dd($request);
           $categories=Category::orderBy('title')->get();
           $query=Query::find($query);
           //validação
@@ -156,11 +161,15 @@ class QueryController extends Controller
               'content'=>'required|max:255',
             ]);
             //atualizar
+            echo Auth::User()->id;
+
             $query->user_id=Auth::User()->id;
             $query->company_id=$request->company_id;
             $query->content=$request->content;
             $save=$query->save();
-            if($save){
+
+            //echo Auth::User()->id;
+           if($save){
               $nav=5;
               $queries=Query::orderBy('updated_at')->get();
               return view('client.index',['nav'=>$nav,'categories'=>$categories,'queries'=>$queries]);

@@ -33,7 +33,7 @@
 
   </div>
   <div class="col-md-2 diferent_container1">
-    <h5><strong>Perfil</strong></h5>
+    <h5><strong>Relatório</strong></h5>
     <ul class="nav flex-column">
       <li class="nav-item">
         <a class="nav-link active" style="color:black" href="/areaempresa/relatorios/avaliacoes">Avaliações de Usuários</a>

@@ -12,9 +12,13 @@
 */
 Auth::routes();
 
+//Route::get('/sendemail','appController@enviarEmail');
 Route::get('/home', 'CategoryController@index')->name('home');
 
 Route::get('/', 'CategoryController@index');
+
+Route::get('/autenticarcodigo', 'PrincipalController@autenticarcodigo');
+
 
 Route::get('/cidadesmaisvisitadas','PrincipalController@showcities');
 
@@ -56,7 +60,7 @@ Route::get('/areacliente/avaliaraempresa/{company_id}','QueryController@create')
 
 Route::post('/areacliente/avaliarempresa','QueryController@store');
 
-Route::post('/areacliente/atualizaravaliacao/{company_id}','QueryController@update');
+Route::patch('/areacliente/atualizaravaliacao/{query_id}','QueryController@update');
 
 Route::get('/areacliente/atualizaraavaliacao/{company_id}','QueryController@edit');
 
