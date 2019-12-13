@@ -20,7 +20,8 @@
              </div>
              <div class="col">
 
-                   <a id="navbarDropdown" class="navbar-brand" href="#" style="color:white" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                   <a id="navbarDropdown" class="navbar-brand" href="#" style="color:white" role="button" data-toggle="dropdown"
+                   aria-haspopup="true" aria-expanded="false" v-pre>
                        {{ Auth::user()->username }} <span class="caret"></span>
                    </a>
 

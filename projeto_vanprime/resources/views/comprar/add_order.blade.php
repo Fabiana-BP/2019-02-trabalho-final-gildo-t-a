@@ -18,7 +18,7 @@
     <input type="hidden" name="date_trip" value="{{$date_trip}}">
     <input type="hidden" name="seat" value="{{$seat}}">
     <input type="hidden" name="order_id" value="{{$order_id}}">
-    <h4>Data da viagem: {{$date_trip}}</h4>
+    <h4>Data da viagem: {{date("d/m/Y", strtotime($date_trip))}}</h4>
     <h4>Assento: {{$seat}}</h4>
 
     <div class="form-group">

@@ -5,26 +5,30 @@
         @method('PATCH')
 
         <div class="form-group">
-          <label for="name">Nome:</label>
-          <input type="text" name="name" value="{{$user->name}}" class="form-control">
+          <label id="label1" for="name">Nome:</label>
+          <input id="name" type="text" name="name" value="{{$user->name}}" class="form-control"
+          onchange="validateRegisterUser('name','label1')">
         </div>
         <div class="form-group">
-          <label for="cpf">CPF:</label>
-          <input type="text" name="cpf" value="{{$user->cpf}}" class="form-control">
-        </div>
-
-        <div class="form-group">
-          <label for="email">E-mail:</label>
-          <input type="email" name="email" value="{{$user->email}}" class="form-control">
+          <label id="label2" for="cpf">CPF:</label>
+          <input id="cpf" type="text" name="cpf" value="{{$user->cpf}}" class="form-control"
+          onchange="validateRegisterUser('cpf','label2')">
         </div>
 
         <div class="form-group">
-          <label for="phone">Celular:</label>
-          <input type="text" name="phone" value="{{$user->phone}}" class="form-control">
+          <label id="label3" for="email">E-mail:</label>
+          <input id=id="email" type="email" name="email" value="{{$user->email}}" class="form-control"
+          onchange="validateRegisterUser('email','label3')">
         </div>
 
         <div class="form-group">
-          <label for="image_user">Foto:</label>
+          <label id="label4" for="phone">Celular:</label>
+          <input id="phone" type="text" name="phone" value="{{$user->phone}}" class="form-control"
+          onchange="validateRegisterUser('phone','label4')">
+        </div>
+
+        <div class="form-group">
+          <label id="label5" for="image_user">Foto:</label>
           <input type="file" name="image_user" id="image_user">
         </div>
 

@@ -10,14 +10,14 @@
           <div class="form-group">
             <label id="label1" for="board">Placa:</label>
             <input type="text" class="form-control" id="board" placeholder="XXX1234" name="board"
-              >
+              onchange="validateRegisterVehicle('board','label1')">
           </div>
 
 
           <div class="form-group">
             <label id="label2" for="category_id">Categoria:</label>
             <select id="category_id" class="custom-select form-control box_style" name="category_id"
-            onclick="validateRegisterVehicle('board','label1')" oninput="validateRegisterVehicle('category_id','label2')">
+            onclick="validateRegisterVehicle('board','label1')" onchange="validateRegisterVehicle('category_id','label2')">
             <option class="form-control" value="0" disabled selected>Selecione</option>
             @foreach ($categories as $c)
               <option class="form-control" value="{{ $c->id }}">{{ $c->title }}</option>
@@ -28,7 +28,7 @@
           <div class="form-group">
             <label id="label3" for="max_seats">Número máximo de assentos:</label>
             <input type="text" class="form-control" id="max_seats" placeholder="Número máximo" name="max_seats"
-            oninput="validateRegisterVehicle('max_seats','label3')">
+            onchange="validateRegisterVehicle('max_seats','label3')">
           </div>
 
 

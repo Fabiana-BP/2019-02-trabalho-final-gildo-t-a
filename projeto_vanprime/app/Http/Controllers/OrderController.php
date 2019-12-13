@@ -105,6 +105,11 @@ class OrderController extends Controller
           return redirect()->back();
         }
 
+        if($request->cost<1){
+          session()->flash('mensagem1','Por favor, insira o número de passageiros');
+          return redirect()->back();
+        }
+
         $validatedData = $request->validate(
           [
             'date_trip'=>'required|date',
@@ -121,6 +126,10 @@ class OrderController extends Controller
           $o->type_pay = $request->type_pay;
           if($o->type_pay == "credito"){
             $o->cred_card_number=$request->cred_card_number;
+            if(empty($o->cred_card_number)){
+              session()->flash('mensagem1','Por favor, insira o número do cartão!');
+              return redirect()->back();
+            }
           }
 
 

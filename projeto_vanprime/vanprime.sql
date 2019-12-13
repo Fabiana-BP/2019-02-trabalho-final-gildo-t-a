@@ -90,7 +90,7 @@ CREATE TABLE `companies` (
   `web_page` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   `content` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=16 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -99,7 +99,7 @@ CREATE TABLE `companies` (
 
 LOCK TABLES `companies` WRITE;
 /*!40000 ALTER TABLE `companies` DISABLE KEYS */;
-INSERT INTO `companies` VALUES (14,'Gontijo',NULL,'Praça Rio Branco','Centro','100','Belo Horizonte','0800 728 0044','gontur@saogeraldo.com.br','company045134201912125df1c7569f93a.jpeg','2019-12-12 07:51:34','2019-12-12 07:51:34','http://www.gontijo.com.br/','A Gontijo mantém sempre o padrão de excelência no atendimento aos seus clientes.');
+INSERT INTO `companies` VALUES (14,'Gontijo',NULL,'Praça Rio Branco','Centro','100','Belo Horizonte','0800 728 0044','gontur@saogeraldo.com.br','company045134201912125df1c7569f93a.jpeg','2019-12-12 07:51:34','2019-12-13 06:11:20','http://www.gontijo.com.br/','A Gontijo mantém sempre o padrão de excelência no atendimento aos seus clientes.'),(15,'Presidente','18.527.671/0001-70','Praça Rio Branco','Centro','100','Belo Horizonte','(31)3201-1591','atendimento@viacaopresidente.com.br','company232545201912125df2cc79a5137.png','2019-12-13 02:05:32','2019-12-13 02:25:45','http://www.viacaopresidente.com.br/portal/','A Viação Presidente dispõe de uma frota, preparada para atender as necessidades de seus clientes, com cabines confortáveis e preparadas para acessibilidade.');
 /*!40000 ALTER TABLE `companies` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -172,7 +172,7 @@ CREATE TABLE `nocustomers` (
   PRIMARY KEY (`id`),
   KEY `nocustomers_way_id_foreign` (`way_id`),
   CONSTRAINT `nocustomers_way_id_foreign` FOREIGN KEY (`way_id`) REFERENCES `ways` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=72 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=91 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -181,7 +181,7 @@ CREATE TABLE `nocustomers` (
 
 LOCK TABLES `nocustomers` WRITE;
 /*!40000 ALTER TABLE `nocustomers` DISABLE KEYS */;
-INSERT INTO `nocustomers` VALUES (59,'2019-12-17',12,14,'2019-12-12 07:59:32','2019-12-12 07:59:32'),(60,'2019-12-17',21,14,'2019-12-12 07:59:35','2019-12-12 07:59:35'),(61,'2019-12-17',27,14,'2019-12-12 07:59:38','2019-12-12 07:59:38'),(62,'2019-12-17',5,14,'2019-12-12 07:59:43','2019-12-12 07:59:43'),(63,'2019-12-17',18,13,'2019-12-12 08:00:08','2019-12-12 08:00:08'),(64,'2019-12-17',15,13,'2019-12-12 08:00:11','2019-12-12 08:00:11'),(65,'2019-12-17',28,13,'2019-12-12 08:00:14','2019-12-12 08:00:14'),(66,'2019-12-17',16,19,'2019-12-12 08:01:45','2019-12-12 08:01:45'),(67,'2019-12-17',1,19,'2019-12-12 08:01:49','2019-12-12 08:01:49'),(68,'2019-12-17',8,20,'2019-12-12 08:09:48','2019-12-12 08:09:48'),(69,'2019-12-17',9,20,'2019-12-12 08:09:51','2019-12-12 08:09:51'),(70,'2019-12-18',17,13,'2019-12-12 08:13:02','2019-12-12 08:13:02'),(71,'2019-12-18',10,13,'2019-12-12 08:13:19','2019-12-12 08:13:19');
+INSERT INTO `nocustomers` VALUES (59,'2019-12-17',12,14,'2019-12-12 07:59:32','2019-12-12 07:59:32'),(60,'2019-12-17',21,14,'2019-12-12 07:59:35','2019-12-12 07:59:35'),(61,'2019-12-17',27,14,'2019-12-12 07:59:38','2019-12-12 07:59:38'),(62,'2019-12-17',5,14,'2019-12-12 07:59:43','2019-12-12 07:59:43'),(63,'2019-12-17',18,13,'2019-12-12 08:00:08','2019-12-12 08:00:08'),(64,'2019-12-17',15,13,'2019-12-12 08:00:11','2019-12-12 08:00:11'),(65,'2019-12-17',28,13,'2019-12-12 08:00:14','2019-12-12 08:00:14'),(66,'2019-12-17',16,19,'2019-12-12 08:01:45','2019-12-12 08:01:45'),(67,'2019-12-17',1,19,'2019-12-12 08:01:49','2019-12-12 08:01:49'),(68,'2019-12-17',8,20,'2019-12-12 08:09:48','2019-12-12 08:09:48'),(69,'2019-12-17',9,20,'2019-12-12 08:09:51','2019-12-12 08:09:51'),(70,'2019-12-18',17,13,'2019-12-12 08:13:02','2019-12-12 08:13:02'),(71,'2019-12-18',10,13,'2019-12-12 08:13:19','2019-12-12 08:13:19'),(72,'2019-12-20',12,22,'2019-12-13 01:01:08','2019-12-13 01:01:08'),(73,'2019-12-20',17,22,'2019-12-13 01:01:12','2019-12-13 01:01:12'),(74,'2019-12-20',6,22,'2019-12-13 01:01:16','2019-12-13 01:01:16'),(75,'2019-12-25',1,19,'2019-12-13 01:31:52','2019-12-13 01:31:52'),(76,'2019-12-25',2,19,'2019-12-13 01:32:06','2019-12-13 01:32:06'),(77,'2019-12-25',13,13,'2019-12-13 01:43:08','2019-12-13 01:43:08'),(78,'2019-12-25',10,13,'2019-12-13 01:46:57','2019-12-13 01:46:57'),(79,'2019-12-26',2,19,'2019-12-13 01:56:47','2019-12-13 01:56:47'),(80,'2019-12-26',1,19,'2019-12-13 01:57:03','2019-12-13 01:57:03'),(81,'2019-12-26',4,19,'2019-12-13 01:57:16','2019-12-13 01:57:16'),(82,'2019-12-26',3,19,'2019-12-13 01:57:28','2019-12-13 01:57:28'),(83,'2019-12-26',41,13,'2019-12-13 01:58:58','2019-12-13 01:58:58'),(84,'2019-12-26',1,13,'2019-12-13 01:59:08','2019-12-13 01:59:08'),(85,'2019-12-20',15,15,'2019-12-13 03:33:40','2019-12-13 03:33:40'),(86,'2019-12-20',16,15,'2019-12-13 03:33:54','2019-12-13 03:33:54'),(87,'2019-12-20',21,15,'2019-12-13 03:34:09','2019-12-13 03:34:09'),(88,'2019-12-20',22,15,'2019-12-13 03:34:21','2019-12-13 03:34:21'),(89,'2019-12-19',5,15,'2019-12-13 05:59:34','2019-12-13 05:59:34'),(90,'2019-12-19',10,15,'2019-12-13 05:59:51','2019-12-13 05:59:51');
 /*!40000 ALTER TABLE `nocustomers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -207,7 +207,7 @@ CREATE TABLE `orders` (
   KEY `orders_way_id_foreign` (`way_id`),
   CONSTRAINT `orders_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `orders_way_id_foreign` FOREIGN KEY (`way_id`) REFERENCES `ways` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -216,7 +216,7 @@ CREATE TABLE `orders` (
 
 LOCK TABLES `orders` WRITE;
 /*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-INSERT INTO `orders` VALUES (49,13,40,'2019-12-18',99.00,'boleto',NULL,'2019-12-12 08:12:32','2019-12-12 08:12:32');
+INSERT INTO `orders` VALUES (49,13,40,'2019-12-18',99.00,'boleto',NULL,'2019-12-12 08:12:32','2019-12-12 08:12:32'),(50,19,40,'2019-12-25',130.00,'credito',14789456124789,'2019-12-13 01:31:35','2019-12-13 01:31:35'),(51,13,42,'2019-12-25',99.00,'credito',NULL,'2019-12-13 01:42:10','2019-12-13 01:42:10'),(52,19,42,'2019-12-26',260.00,'credito',14578978457895,'2019-12-13 01:56:21','2019-12-13 01:56:21'),(53,13,40,'2019-12-26',99.00,'boleto',NULL,'2019-12-13 01:58:41','2019-12-13 01:58:41'),(54,15,40,'2019-12-20',396.00,'boleto',NULL,'2019-12-13 03:33:20','2019-12-13 03:33:20'),(56,15,40,'2019-12-19',158.40,'boleto',NULL,'2019-12-13 05:59:19','2019-12-13 05:59:19');
 /*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +238,7 @@ CREATE TABLE `passengers` (
   PRIMARY KEY (`id`),
   KEY `passengers_order_id_foreign` (`order_id`),
   CONSTRAINT `passengers_order_id_foreign` FOREIGN KEY (`order_id`) REFERENCES `orders` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=34 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -247,7 +247,7 @@ CREATE TABLE `passengers` (
 
 LOCK TABLES `passengers` WRITE;
 /*!40000 ALTER TABLE `passengers` DISABLE KEYS */;
-INSERT INTO `passengers` VALUES (32,49,'Luara Cristina da Silva',15,17,'2019-12-12 08:13:03','2019-12-12 08:13:03'),(33,49,'Tadeu Henrique',18,10,'2019-12-12 08:13:19','2019-12-12 08:13:19');
+INSERT INTO `passengers` VALUES (32,49,'Luara Cristina da Silva',15,17,'2019-12-12 08:13:03','2019-12-12 08:13:03'),(33,49,'Tadeu Henrique',18,10,'2019-12-12 08:13:19','2019-12-12 08:13:19'),(34,50,'João Maria fernandes',16,1,'2019-12-13 01:31:54','2019-12-13 01:31:54'),(35,50,'Luara Cristina da Silva',20,2,'2019-12-13 01:32:06','2019-12-13 01:32:06'),(36,51,'Maria Laura',14,13,'2019-12-13 01:43:09','2019-12-13 01:43:09'),(37,51,'Luis Claudio Silva',12,10,'2019-12-13 01:46:58','2019-12-13 01:46:58'),(38,52,'William Mateus',22,2,'2019-12-13 01:56:47','2019-12-13 01:56:47'),(39,52,'Willington Augusto',19,1,'2019-12-13 01:57:04','2019-12-13 01:57:04'),(40,52,'Tadeu Henrique',14,4,'2019-12-13 01:57:16','2019-12-13 01:57:16'),(41,52,'Lucas João',27,3,'2019-12-13 01:57:29','2019-12-13 01:57:29'),(42,53,'Cláudia Maria',12,41,'2019-12-13 01:58:58','2019-12-13 01:58:58'),(43,53,'João Paulo Marques',16,1,'2019-12-13 01:59:08','2019-12-13 01:59:08'),(44,54,'Marcos Filipe',14,15,'2019-12-13 03:33:41','2019-12-13 03:33:41'),(45,54,'João Paulo Marques',18,16,'2019-12-13 03:33:54','2019-12-13 03:33:54'),(46,54,'Lucas João',78,21,'2019-12-13 03:34:09','2019-12-13 03:34:09'),(47,54,'Maria Clara',72,22,'2019-12-13 03:34:21','2019-12-13 03:34:21'),(48,56,'Marcos Moreira',21,5,'2019-12-13 05:59:35','2019-12-13 05:59:35'),(49,56,'Lucas Fernando',23,10,'2019-12-13 05:59:51','2019-12-13 05:59:51');
 /*!40000 ALTER TABLE `passengers` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -294,7 +294,7 @@ CREATE TABLE `queries` (
   KEY `queries_user_id_foreign` (`user_id`),
   CONSTRAINT `queries_company_id_foreign` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`),
   CONSTRAINT `queries_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -303,7 +303,7 @@ CREATE TABLE `queries` (
 
 LOCK TABLES `queries` WRITE;
 /*!40000 ALTER TABLE `queries` DISABLE KEYS */;
-INSERT INTO `queries` VALUES (4,14,40,'Excelente empresa!!!!','2019-12-12 08:38:31','2019-12-12 09:13:09');
+INSERT INTO `queries` VALUES (4,14,40,'Excelente empresa!!!! :)','2019-12-12 08:38:31','2019-12-13 01:30:23'),(5,14,42,'gostei bastante.','2019-12-13 01:50:07','2019-12-13 01:50:07');
 /*!40000 ALTER TABLE `queries` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -333,7 +333,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_username_unique` (`username`),
   UNIQUE KEY `users_cpf_unique` (`cpf`),
   UNIQUE KEY `users_email_unique` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=42 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=44 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -342,7 +342,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (40,'fabi','Fabiana Barreto Pereira','147.123.014-58','(31)97885-7896','051928201912125df1cde09de06.jpeg','client',NULL,'fabi_bp91@hotmail.com',NULL,'$2y$10$MHMtQNPiYLJY2kR.bx28D.xa.s3NI3P9pCshb/1wpGkTgjHnuXvU.',NULL,'2019-12-12 07:45:02','2019-12-12 08:19:28'),(41,'maria','Maria Aparecida Fernandes','789.123.456-78','(31)97899-1425','051039201912125df1cbcf69de8.png','company','14','maria@email.com',NULL,'$2y$10$rV..ykpyeDCITodAB3/wBu9M63pW14PzCpfJeswZuT/q7rMjwOck.',NULL,'2019-12-12 07:46:00','2019-12-12 08:10:39');
+INSERT INTO `users` VALUES (40,'fabi','Fabiana Barreto Pereira','147.123.014-58','(31)97885-7896','051928201912125df1cde09de06.jpeg','client',NULL,'fabi_bp91@hotmail.com',NULL,'$2y$10$MHMtQNPiYLJY2kR.bx28D.xa.s3NI3P9pCshb/1wpGkTgjHnuXvU.',NULL,'2019-12-12 07:45:02','2019-12-12 08:19:28'),(41,'maria','Maria Aparecida Fernandes','789.123.456-78','(31)97899-1425','212202201912125df2af7a32f94.jpeg','company','14','maria@email.com',NULL,'$2y$10$rV..ykpyeDCITodAB3/wBu9M63pW14PzCpfJeswZuT/q7rMjwOck.',NULL,'2019-12-12 07:46:00','2019-12-13 00:22:02'),(42,'mpaula','Maria Paula Fernandes','457.567.124-78','(31)97812-7894','225039201912125df2c43f4e2ce.png','client',NULL,'mpaula@email.com',NULL,'$2y$10$h0eCSeHh5irS8e5NqYZxxeFOpIwoSUAb.GnfmIYJx37oxB9naxl9S',NULL,'2019-12-13 01:40:48','2019-12-13 01:50:39'),(43,'luis','Luis Augusto Pereira','147.258.123-58','(31)97812-7894','232506201912125df2cc5282044.png','company','15','luis@email.com',NULL,'$2y$10$NX5FoSa6JGqZ1eUFpEohdecew5VfZs.39Cy8JpU/Ei9jTermXVNWW',NULL,'2019-12-13 02:01:36','2019-12-13 02:25:06');
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -367,7 +367,7 @@ CREATE TABLE `vehicles` (
   KEY `vehicles_category_id_foreign` (`category_id`),
   CONSTRAINT `vehicles_category_id_foreign` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`),
   CONSTRAINT `vehicles_company_id_foreign` FOREIGN KEY (`company_id`) REFERENCES `companies` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -376,7 +376,7 @@ CREATE TABLE `vehicles` (
 
 LOCK TABLES `vehicles` WRITE;
 /*!40000 ALTER TABLE `vehicles` DISABLE KEYS */;
-INSERT INTO `vehicles` VALUES (7,14,'ASE1234',3,40,'2019-12-12 07:52:07','2019-12-12 07:52:07'),(8,14,'QWE1425',3,40,'2019-12-12 07:52:22','2019-12-12 07:52:22'),(9,14,'QWT4879',3,40,'2019-12-12 07:52:38','2019-12-12 07:52:38'),(10,14,'WQA3269',4,16,'2019-12-12 07:52:50','2019-12-12 07:52:50');
+INSERT INTO `vehicles` VALUES (7,14,'ASE1234',3,41,'2019-12-12 07:52:07','2019-12-13 00:43:32'),(8,14,'QWE1425',3,40,'2019-12-12 07:52:22','2019-12-12 07:52:22'),(9,14,'QWT4879',3,40,'2019-12-12 07:52:38','2019-12-12 07:52:38'),(10,14,'WQA3269',4,16,'2019-12-12 07:52:50','2019-12-12 07:52:50'),(11,14,'AQW4789',3,40,'2019-12-13 00:54:22','2019-12-13 00:54:22');
 /*!40000 ALTER TABLE `vehicles` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -400,7 +400,7 @@ CREATE TABLE `ways` (
   PRIMARY KEY (`id`),
   KEY `ways_vehicle_id_foreign_idx` (`vehicle_id`),
   CONSTRAINT `ways_vehicle_id_foreign` FOREIGN KEY (`vehicle_id`) REFERENCES `vehicles` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=23 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -409,7 +409,7 @@ CREATE TABLE `ways` (
 
 LOCK TABLES `ways` WRITE;
 /*!40000 ALTER TABLE `ways` DISABLE KEYS */;
-INSERT INTO `ways` VALUES (13,'João Monlevade-MG','Belo Horizonte-MG','08:00:00',7,50.00,0.02,'2019-12-12 07:54:02','2019-12-12 07:54:02'),(14,'Belo Horizonte-MG','Ipatinga-MG','12:00:00',7,70.00,0.02,'2019-12-12 07:55:03','2019-12-12 07:55:03'),(15,'Ipatinga-MG','Governador Valadares-MG','16:00:00',7,80.00,0.02,'2019-12-12 07:57:06','2019-12-12 07:57:06'),(16,'Abel Figueiredo-PA','Fagundes-PB','02:00:00',8,180.00,0.00,'2019-12-12 07:57:58','2019-12-12 07:57:58'),(17,'Açailândia-MA','Agudos do Sul-PR','16:00:00',8,800.00,0.00,'2019-12-12 07:58:28','2019-12-12 07:58:28'),(18,'Tabaí-RS','Lábrea-AM','19:00:00',8,500.00,0.00,'2019-12-12 07:58:54','2019-12-12 07:58:54'),(19,'Quadra-SP','Sabino-SP','08:00:00',10,65.00,0.01,'2019-12-12 08:00:49','2019-12-12 08:00:49'),(20,'Rafael Fernandes-RN','Acará-PA','18:00:00',10,500.00,0.10,'2019-12-12 08:01:23','2019-12-12 08:01:23');
+INSERT INTO `ways` VALUES (13,'João Monlevade-MG','Belo Horizonte-MG','08:00:00',7,50.00,0.02,'2019-12-12 07:54:02','2019-12-12 07:54:02'),(14,'Belo Horizonte-MG','Ipatinga-MG','12:00:00',7,72.00,0.02,'2019-12-12 07:55:03','2019-12-13 00:43:51'),(15,'Ipatinga-MG','Governador Valadares-MG','16:00:00',7,80.00,0.02,'2019-12-12 07:57:06','2019-12-12 07:57:06'),(16,'Abel Figueiredo-PA','Fagundes-PB','02:00:00',8,180.00,0.00,'2019-12-12 07:57:58','2019-12-12 07:57:58'),(17,'Açailândia-MA','Agudos do Sul-PR','16:00:00',8,800.00,0.00,'2019-12-12 07:58:28','2019-12-12 07:58:28'),(18,'Tabaí-RS','Lábrea-AM','19:00:00',8,500.00,0.00,'2019-12-12 07:58:54','2019-12-12 07:58:54'),(19,'Quadra-SP','Sabino-SP','08:00:00',10,65.00,0.01,'2019-12-12 08:00:49','2019-12-12 08:00:49'),(20,'Rafael Fernandes-RN','Acará-PA','18:00:00',10,500.00,0.10,'2019-12-12 08:01:23','2019-12-12 08:01:23'),(22,'Wagner-BA','Xambioá-TO','08:00:00',9,700.00,0.00,'2019-12-13 01:00:43','2019-12-13 01:00:43');
 /*!40000 ALTER TABLE `ways` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -422,4 +422,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2019-12-12  3:22:28
+-- Dump completed on 2019-12-13  0:13:27

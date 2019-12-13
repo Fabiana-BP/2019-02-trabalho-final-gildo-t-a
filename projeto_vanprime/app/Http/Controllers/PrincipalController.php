@@ -8,22 +8,65 @@ use App\Company;
 use App\Way;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\mailLogin;
 
 class PrincipalController extends Controller
 {
 
   public function autenticarcodigo(){
+    Mail::to(Auth::User()->email)->send(new mailLogin());
     return view('auth.enter_code');
   }
 
   public function verificacodigo(Request $request){
     //mandar e-mail com código aleatório
-    $code=session()->pull('random', []);
+    $code=session('random');
+  //session(['logado','logado']);
     if($request->code == $code){
-      session(['codeok' => 'codeok']);
-      redirect('/home');
+       session()->forget('random');
+       //session()->forget('send');
+       session(['logado','logado']);
+      if(Auth::user()->user_role=='company'){
+        if(empty(Auth::user()->company)){
+          return view('register.register_company',['username'=>Auth::User()->username]);
+        }
+        $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
+        $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
+        //echo $sources;
+        $companies=Company::orderBy('name')->get();
+        $categories=Category::orderBy('title')->get();
+        return view('index',['categories'=>$categories,'companies'=>$companies,'sources'=>$sources,'destinations'=>$destinations]);
+      }else{
+        //  echo "teste";
+        //dd(session()->all());
+        if(session()->has('function') && session('function')=='max_seats'){//ia fazer compra
+          session()->forget('function');
+          //variaveis recuperadas da sessão
+          $way_id=session()->pull('way_id',[]);
+          $date=session()->pull('date',[]);
+          $passenger=session()->pull('passenger',[]);
+          //voltando para página para selecionar poltronas
+          $way=Way::find($way_id);
+          $vehicle=Vehicle::orderBy('board')->where('id','=',$way->vehicle->id)->first();
+          $ways=Way::orderBy('departure_city')->where('vehicle_id','=',$vehicle->id)->get();
+          $armchairs=Nocustomer::orderBy('way_id')->whereRaw('date_trip  = ? and way_id = ?',[$date,$way_id])->select('seat')->get();
+          $nav=6;
+          $categories=Category::orderBy('title')->get();
+          return view('choose_armchairs',['armchairs'=>$armchairs,'categories'=>$categories,'vehicle'=>$vehicle,
+          'ways'=>$ways,'date_trip'=>$date,'way'=>$way,'passenger'=>$passenger]);
+        }
+          $sources=Way::orderBy('departure_city')->select('departure_city')->distinct()->get();
+          $destinations=Way::orderBy('stop_city')->select('stop_city')->distinct()->get();
+          //echo $sources;
+          $companies=Company::orderBy('name')->get();
+          $categories=Category::orderBy('title')->get();
+          return view('index',['categories'=>$categories,'companies'=>$companies,'sources'=>$sources,'destinations'=>$destinations]);
+
+      }
+
     }else{
-      redirect()->back();
+     return redirect('/home');
     }
   }
 

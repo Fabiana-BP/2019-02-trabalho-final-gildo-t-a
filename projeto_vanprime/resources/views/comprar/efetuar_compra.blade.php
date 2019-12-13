@@ -18,7 +18,7 @@
 
     <div class="form-group">
       <label id="label2" for="date_trip">Data da viagem:</label>
-      <input type="text" class="form-control" name="date_trip" value="{{$date_trip}}" readonly>
+      <input type="text" class="form-control" name="date_trip" value="{{date("d/m/Y", strtotime($date_trip))}}" readonly>
     </div>
       <input type="hidden" class="form-control" name="date_trip" value="{{$date_trip}}">
 

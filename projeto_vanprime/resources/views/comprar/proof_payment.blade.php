@@ -17,6 +17,7 @@
       <h5>CPF: {{Auth::User()->cpf}}</h5>
       <h5>Valor total: {{$order->cost}}</h5>
       <h5>Forma de pagamento: {{$order->type_pay}}</h5>
+      <h5>Data da viagem: {{date("d/m/Y", strtotime($order->date_trip))}}</h5>
     </div>
     <br>
     <div class="form-group">

@@ -19,6 +19,9 @@ Route::get('/', 'CategoryController@index');
 
 Route::get('/autenticarcodigo', 'PrincipalController@autenticarcodigo');
 
+Route::post('/verificacodigo', 'PrincipalController@verificacodigo');
+
+Route::post('/carregadestinos','CategoryController@destination');
 
 Route::get('/cidadesmaisvisitadas','PrincipalController@showcities');
 

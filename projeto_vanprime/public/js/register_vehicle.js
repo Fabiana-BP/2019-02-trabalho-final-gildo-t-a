@@ -11,7 +11,7 @@ function validateRegisterVehicle(campo,label) {
   var er = /[a-z]{3}-?\d{4}/gim;
   er.lastIndex = 0;
 
-  if (( n.value.length == 0 ) ||(campo == "board" && !er.test(n.value)) || (campo == "category_id" && n.value<1)
+  if (( n.value.length == 0 ) ||(campo == "board" && !er.test(n.value)) && n.value.length>4 || (campo == "category_id" && n.value<1)
   ||(campo=="max_seats" && isNaN(parseInt(n.value)))){
 
     // Erro
