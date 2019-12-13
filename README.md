@@ -29,7 +29,7 @@ Este sistema terá dois públicos-alvo: empresas interessadas em vender passagen
 + compra da passagem e avaliação de satisfação;
 + relatório de compras;
 
-Além dessas funcionalidades serão implementados sistema de segurança através de login em dois fatores para as empresas, sistema de avaliação de clientes a fim de proporcionar legitimidade e maior qualidade dos serviços prestados, além de informações sobre os lugares mais visitados, ofertas e promoções.
+Além dessas funcionalidades serão implementados sistema de avaliação de clientes a fim de proporcionar legitimidade e maior qualidade dos serviços prestados, além de informações sobre os lugares mais visitados, e ofertas e promoções.
 
 ### 3. Restrições
 
@@ -45,12 +45,18 @@ A página principal irá conter opções que visam agilizar o acesso às informa
 * Página de compra: Visualizar dados da empresa, selecionar poltrona disponível, escolher tipo de pagamento e botão para efetivar a compra.
 
 ### 5. Execução
-* Copiar todo o conteúdo para a pasta _"c:/wamp/www/"_.
-* Criar banco de dados com nome 'bus' (sem aspas).
-* Executar script _bus.sql_ localizado na pasta raíz do projeto.
-* Abrir localhost em seu navegador padrão.
-* Acesse este projeto em: http://gazevedo.ga
+* Instalar o Laravel.
+* Criar banco de dados com nome 'vanprime' (sem aspas).
+* Criar usuário 'vanprime@localhost' e dar permissão a ele para ter acesso ao banco 'vanprime' (senha: 123).
+* Executar script vanprime.sql localizado na pasta raíz do projeto.
+* Executar 'php artisan serve' na pasta do projeto e colar o endereço em algum navegador.
 
-### 5. Referências
+### 6. Observações
+* A tabela Municipios foi retirada de (https://github.com/chandez/Estados-Cidades-IBGE/blob/master/Municipios.sql).
+* O Sistema de Gerenciamento de Banco de Dados utilizado foi o MySQL.
+
+### 7. Referências
+* https://laravel.com/
 * https://github.com/projectworldsofficial/Online-Bus-Booking-System-In-PHP
 * https://www.php.net/manual/pt_BR/index.php
+
