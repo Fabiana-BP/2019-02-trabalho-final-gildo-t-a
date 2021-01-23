@@ -36,9 +36,9 @@ Neste trabalho não será contemplado procedimentos de comprovação, validaçã
 ### 4. Protótipo
 
 A página principal irá conter opções que visam agilizar o acesso às informações e aos recursos para efetiva compra de passagens.
-* [Página principal](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/index.html): Sobre a empresa, autenticação, campos para pesquisa de rotas (data, origem e destino), avaliações dos clientes e informações sobre as cidades que mais obtiveram compras.
-* [Página da empresa](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/area-empresa.html): Opções de cadastro, visualizar perfil e relatório de vendas.
-* Página do cliente: [Opção de cadastro](https://github.com/UFOP-CSI477/2019-02-trabalho-final-gildo-t-a/blob/master/prototipo/novo-usuario.html), visualizar perfil, compras já efetuadas.
+* [Página principal](https://github.com/Fabiana-BP/sistema-web-com-laravel/blob/master/prototipo/index.html): Sobre a empresa, autenticação, campos para pesquisa de rotas (data, origem e destino), avaliações dos clientes e informações sobre as cidades que mais obtiveram compras.
+* [Página da empresa](https://github.com/Fabiana-BP/sistema-web-com-laravel/blob/master/prototipo/area-empresa.html): Opções de cadastro, visualizar perfil e relatório de vendas.
+* Página do cliente: [Opção de cadastro](https://github.com/Fabiana-BP/sistema-web-com-laravel/blob/master/prototipo/novo-usuario.html), visualizar perfil, compras já efetuadas.
 * Página de rotas filtradas: Rotas disponíveis para a pesquisa específica, preços e botão de compra.
 * Página de compra: Visualizar dados da empresa, selecionar poltrona disponível, escolher tipo de pagamento e botão para efetivar a compra.
 
