@@ -1,6 +1,4 @@
 # **CSI477-2019-02 - Proposta de Trabalho Final**
-## *Grupo: Fabiana Barreto & Gildo Azevedo*
-
 --------------
 
 # **Vanprime Transportes**
